@@ -6,19 +6,28 @@ import { update as updateP2, draw as drawP2, onP2, getP2Head, P2Intersection, te
 import { update as updateFood, draw as drawFood} from './food.js'
 import { outsideGrid } from './grid.js'
 
+import { draw as drawScore } from './scoreBoard.js'
+
 
 let lastRenderTime = 0
-let gameOver = false
-const gameBoard = document.getElementById('game-board')
+let winP2 = false
+let winP1 = false
+export const gameBoard = document.getElementById('game-board')
 
 
 function main(currentTime) {
-  if (gameOver) {
-    if (confirm('You lost. Press OK to restart.')) {
+  if (winP1) {
+      if (confirm('Blue wins!. Press OK to restart.')) {
       window.location = '/'
     }
     return
   }
+  if (winP2) {
+    if (confirm('Red wins!. Press OK to restart.')) {
+    window.location = '/'
+  }
+  return
+}
 
   window.requestAnimationFrame(main)
   const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000
@@ -48,14 +57,15 @@ function draw() {
   drawSnake(gameBoard)
   drawP2(gameBoard)
   drawFood(gameBoard)
+  drawScore(gameBoard)
 }
 
 function checkDeath() {
-  gameOver = snakeIntersection()
+  winP2 = snakeIntersection()
 }
 
 function checkP2Death() {
-  gameOver = P2Intersection()
+  winP1 = P2Intersection()
 }
 
 function checkWall() {

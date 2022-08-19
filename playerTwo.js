@@ -1,7 +1,8 @@
 import { getP2Direction } from "./input.js"
+import { onSnake, snakeBody } from "./snake.js"
 
-export const P2_SPEED = 10 //moves this many times per second
-const P2Body = [ 
+export const P2_SPEED = 15 //moves this many times per second
+export const P2Body = [ 
   { x: 8, y: 8 },
 ]
 let newSegments = 0
@@ -44,7 +45,7 @@ export function getP2Head() {
 }
 
 export function P2Intersection() {
-  return onP2(P2Body[0], { ignoreHead: true })
+  return onP2(P2Body[0], { ignoreHead: true }) || onSnake(P2Body[0], { ignoreHead: false })
 }
 
 function equalPositions(pos1, pos2) {

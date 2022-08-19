@@ -1,7 +1,8 @@
 import { getInputDirection } from "./input.js"
+import { onP2, P2Body } from "./playerTwo.js"
 
-export const SNAKE_SPEED = 10 //moves this many times per second
-const snakeBody = [ 
+export const SNAKE_SPEED = 15 //moves this many times per second
+export const snakeBody = [ 
   { x: 11, y: 11 },
 ]
 let newSegments = 0
@@ -44,7 +45,7 @@ export function getSnakeHead() {
 }
 
 export function snakeIntersection() {
-  return onSnake(snakeBody[0], { ignoreHead: true })
+  return onSnake(snakeBody[0], { ignoreHead: true }) || onP2(snakeBody[0], { ignoreHead: false })
 }
 
 function equalPositions(pos1, pos2) {
