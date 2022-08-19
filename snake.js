@@ -58,3 +58,27 @@ function addSegments() {
 
   newSegments=0
 }
+
+export function teleportSnake() {
+  let oldPos = snakeBody[0]
+
+  switch(oldPos.x) {
+    case 0:
+      snakeBody[0] = { x: 42, y: oldPos.y }
+      break
+    case 43:
+      snakeBody[0] = { x: 1, y: oldPos.y }
+      break
+
+    default:
+
+      switch(oldPos.y) {
+        case 0:
+          snakeBody[0] = { x: oldPos.x, y: 42 }
+          break
+        case 43:
+          snakeBody[0] = { x: oldPos.x, y: 1 }
+          break
+      }
+  }
+}

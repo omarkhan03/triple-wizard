@@ -1,4 +1,5 @@
 import { onSnake, expandSnake } from './snake.js'
+import { onP2, expandP2 } from './playerTwo.js'
 import { randomGridPosition } from './grid.js'
 
 let food = getRandomFoodPosition()
@@ -7,6 +8,10 @@ const EXPANSION_RATE = 1
 export function update() {
   if (onSnake(food)) {
     expandSnake(EXPANSION_RATE)
+    food = getRandomFoodPosition()
+  }
+  if (onP2(food)) {
+    expandP2(EXPANSION_RATE)
     food = getRandomFoodPosition()
   }
 }

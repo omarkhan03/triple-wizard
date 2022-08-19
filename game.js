@@ -1,5 +1,8 @@
 import { update as updateSnake, draw as drawSnake, 
-  SNAKE_SPEED, onSnake, getSnakeHead, snakeIntersection} from './snake.js'
+  SNAKE_SPEED, onSnake, getSnakeHead, snakeIntersection, teleportSnake} from './snake.js'
+
+import { update as updateP2, draw as drawP2, onP2, getP2Head, P2Intersection, teleportP2} from './playerTwo.js'
+
 import { update as updateFood, draw as drawFood} from './food.js'
 import { outsideGrid } from './grid.js'
 
@@ -33,14 +36,36 @@ function update() {
   updateSnake()
   updateFood()
   checkDeath()
+  checkWall()
+
+  updateP2()
+  checkP2Death()
+  checkP2Wall()
 }
 
 function draw() {
   gameBoard.innerHTML = ''
   drawSnake(gameBoard)
+  drawP2(gameBoard)
   drawFood(gameBoard)
 }
 
 function checkDeath() {
-  gameOver = outsideGrid(getSnakeHead()) || snakeIntersection()
+  gameOver = snakeIntersection()
+}
+
+function checkP2Death() {
+  gameOver = P2Intersection()
+}
+
+function checkWall() {
+  if (outsideGrid(getSnakeHead())) {
+    teleportSnake()
+  }
+}
+
+function checkP2Wall() {
+  if (outsideGrid(getP2Head())) {
+    teleportP2()
+  }
 }
