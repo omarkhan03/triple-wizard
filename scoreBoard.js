@@ -11,3 +11,11 @@ export function draw(gameBoard) {
   blueScoreElement.innerHTML = blueScore
   gameBoard.appendChild(blueScoreElement)
 }
+
+export function scoreRed() {
+  redScore++
+}
+
+export function scoreBlue() {
+  blueScore++
+}

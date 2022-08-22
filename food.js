@@ -1,7 +1,7 @@
 import { onSnake, expandSnake } from './snake.js'
 import { onP2, expandP2 } from './playerTwo.js'
 import { randomGridPosition } from './grid.js'
-import { draw as drawScore, redScore, blueScore } from './scoreBoard.js'
+import { draw as drawScore, scoreRed, scoreBlue } from './scoreBoard.js'
 import { gameBoard } from './game.js'
 
 let food = getRandomFoodPosition()
@@ -12,13 +12,13 @@ export function update() {
   if (onSnake(food)) {
     expandSnake(EXPANSION_RATE)
     food = getRandomFoodPosition()
-    redScore += 1
+    scoreBlue()
     drawScore(gameBoard)
   }
   if (onP2(food)) {
     expandP2(EXPANSION_RATE)
     food = getRandomFoodPosition()
-    blueScore += 1
+    scoreRed()
     drawScore(gameBoard)
   }
 }
