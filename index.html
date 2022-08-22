@@ -17,20 +17,25 @@
     }
 
     #game-board {
-      background-color: #CCC;
+      background-color: rgb(29, 29, 29);
       width: 100vmin;
       height: 100vmin;
 
       display: grid;
       grid-template-rows: repeat(42, 1fr);
       grid-template-columns: repeat(42, 1fr);
+
+      border-color: white;
+      border-width: 1.5px;
+      border-style: solid;
     }
 
     .snake {
-      background-color: hsl(200,100%,50%);
+      background-color: rgb(66, 189, 255);
       border-color: black;
       border-width: 1.5px;
       border-style: solid;
+      border-radius: 30%;
     }
 
     .playerTwo {
@@ -38,24 +43,26 @@
       border-color: black;
       border-width: 1.5px;
       border-style: solid;
+      border-radius: 30%;
     }
 
     .food {
-      background-color: hsl(50,100%,50%);
+      background-color: rgb(255, 213, 0);
       border-color: black;
       border-width: 1.5px;
       border-style: solid;
+      border-radius: 49% 51% 51% 49% / 77% 77% 23% 23% ;
     }
 
     .redScore {
-      color: red;
+      color: rgb(255, 120, 96);
       position: fixed;
       margin: 5vmin;
       font-size: 30px;
     }
 
     .blueScore {
-      color: blue;
+      color: rgb(66, 189, 255);
       position: fixed;
       margin-left: 92vmin;
       margin-top: 5vmin;
