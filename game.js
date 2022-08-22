@@ -13,6 +13,22 @@ let winP2 = false
 let winP1 = false
 export const gameBoard = document.getElementById('game-board')
 
+document.addEventListener("keyup", function(event) {
+  if (
+    event.key === 'w' ||
+    event.key === 'a' ||
+    event.key === 's' ||
+    event.key === 'd' ||
+    event.key === 'ArrowUp' ||
+    event.key === 'ArrowDown' ||
+    event.key === 'ArrowLeft' ||
+    event.key === 'ArrowRight'
+  ) {
+      const start = document.getElementById('start')
+      start.remove()
+  }
+});
+
 function main(currentTime) {
   if (winP1) {
       if (confirm('Blue wins!. Press OK to restart.')) {
