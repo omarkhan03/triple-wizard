@@ -1,5 +1,5 @@
-export let redScore = 1
-export let blueScore = 1 
+export let redScore = 0
+export let blueScore = 0
 
 export function draw(gameBoard) {
   const redScoreElement = document.createElement('div')

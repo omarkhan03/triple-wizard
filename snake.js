@@ -3,7 +3,7 @@ import { onP2, P2Body } from "./playerTwo.js"
 
 export const SNAKE_SPEED = 15 //moves this many times per second
 export const snakeBody = [ 
-  { x: 11, y: 11 },
+  { x: 25, y: 4 },
 ]
 let newSegments = 0
 

@@ -1,19 +1,17 @@
 import { update as updateSnake, draw as drawSnake, 
-  SNAKE_SPEED, onSnake, getSnakeHead, snakeIntersection, teleportSnake} from './snake.js'
+  SNAKE_SPEED, onSnake, getSnakeHead, snakeIntersection, teleportSnake, snakeBody} from './snake.js'
 
-import { update as updateP2, draw as drawP2, onP2, getP2Head, P2Intersection, teleportP2} from './playerTwo.js'
+import { update as updateP2, draw as drawP2, onP2, getP2Head, P2Intersection, teleportP2, P2Body} from './playerTwo.js'
 
 import { update as updateFood, draw as drawFood} from './food.js'
 import { outsideGrid } from './grid.js'
 
 import { draw as drawScore } from './scoreBoard.js'
 
-
 let lastRenderTime = 0
 let winP2 = false
 let winP1 = false
 export const gameBoard = document.getElementById('game-board')
-
 
 function main(currentTime) {
   if (winP1) {
@@ -61,11 +59,11 @@ function draw() {
 }
 
 function checkDeath() {
-  winP2 = snakeIntersection()
+  winP2 = snakeIntersection() || P2Body.length >= 80;
 }
 
 function checkP2Death() {
-  winP1 = P2Intersection()
+  winP1 = P2Intersection() || snakeBody.length >= 80;
 }
 
 function checkWall() {

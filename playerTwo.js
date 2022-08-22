@@ -3,7 +3,7 @@ import { onSnake, snakeBody } from "./snake.js"
 
 export const P2_SPEED = 15 //moves this many times per second
 export const P2Body = [ 
-  { x: 8, y: 8 },
+  { x: 17, y: 6 },
 ]
 let newSegments = 0
 
