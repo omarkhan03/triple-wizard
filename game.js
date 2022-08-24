@@ -13,34 +13,70 @@ let winP2 = false
 let winP1 = false
 export const gameBoard = document.getElementById('game-board')
 
-document.addEventListener("keyup", function(event) {
+const blueWinScreen = document.getElementById('blue-win')
+blueWinScreen.style = 'visibility: hidden;'
+const redWinScreen = document.getElementById('red-win')
+redWinScreen.style = 'visibility: hidden;'
+const drawGame = document.getElementById('draw-game')
+drawGame.style = 'visibility: hidden;'
+
+window.addEventListener("keydown", removeStart);
+
+function removeStart( e ) {
+
   if (
-    event.key === 'w' ||
-    event.key === 'a' ||
-    event.key === 's' ||
-    event.key === 'd' ||
-    event.key === 'ArrowUp' ||
-    event.key === 'ArrowDown' ||
-    event.key === 'ArrowLeft' ||
-    event.key === 'ArrowRight'
+    e.key === 'w' ||
+    e.key === 'a' ||
+    e.key === 's' ||
+    e.key === 'd' ||
+    e.key === 'ArrowUp' ||
+    e.key === 'ArrowDown' ||
+    e.key === 'ArrowLeft' ||
+    e.key === 'ArrowRight'
   ) {
       const start = document.getElementById('start')
-      start.remove()
+      
+      var seconds = 1;
+      start.style.transition = "opacity "+seconds+"s ease"
+
+      start.style.opacity = 0
+      setTimeout(function() {
+          start.remove()
+      }, 1000)
+
+      window.removeEventListener("keydown", removeStart);
   }
-});
+}
+
+
 
 function main(currentTime) {
-  if (winP1) {
-      if (confirm('Blue wins!. Press OK to restart.')) {
-      window.location = '/'
-    }
+  if (winP1 && winP2) {
+    drawGame.style = 'visibility: visible; opacity: 0.8;'
+    window.addEventListener('keydown', function(e) {
+      if (e.key === " ") {
+        window.location = '/'
+      }
+    })
     return
   }
-  if (winP2) {
-    if (confirm('Red wins!. Press OK to restart.')) {
-    window.location = '/'
+  else if (winP1) {
+    blueWinScreen.style = 'visibility: visible; opacity: 0.8;'
+    window.addEventListener('keydown', function(e) {
+      if (e.key === " ") {
+        window.location = '/'
+      }
+    })
+    return
   }
-  return
+  else if (winP2) {
+    redWinScreen.style = 'visibility: visible; opacity: 0.8;'
+    window.addEventListener('keydown', function(e) {
+      if (e.key === " ") {
+        window.location = '/'
+      }
+    })
+    return
 }
 
   window.requestAnimationFrame(main)
@@ -57,13 +93,14 @@ window.requestAnimationFrame(main)
 
 function update() {
   updateSnake()
-  updateFood()
-  checkDeath()
-  checkWall()
-
   updateP2()
+  updateFood()
+
   checkP2Death()
   checkP2Wall()
+
+  checkDeath()
+  checkWall()
 }
 
 function draw() {
