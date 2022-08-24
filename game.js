@@ -55,7 +55,7 @@ function main(currentTime) {
     drawGame.style = 'visibility: visible; opacity: 0.8;'
     window.addEventListener('keydown', function(e) {
       if (e.key === " ") {
-        window.location = '/'
+        window.location = '/2P_snake_game/'
       }
     })
     return
