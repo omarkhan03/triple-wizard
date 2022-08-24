@@ -64,7 +64,7 @@ function main(currentTime) {
     blueWinScreen.style = 'visibility: visible; opacity: 0.8;'
     window.addEventListener('keydown', function(e) {
       if (e.key === " ") {
-        window.location = '/'
+        window.location = '/2P_snake_game/'
       }
     })
     return
@@ -73,7 +73,7 @@ function main(currentTime) {
     redWinScreen.style = 'visibility: visible; opacity: 0.8;'
     window.addEventListener('keydown', function(e) {
       if (e.key === " ") {
-        window.location = '/'
+        window.location = '/2P_snake_game/'
       }
     })
     return
