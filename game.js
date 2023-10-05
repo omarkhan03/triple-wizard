@@ -1,10 +1,8 @@
 import { update as updateSnake, draw as drawSnake, 
   SNAKE_SPEED, onSnake, getSnakeHead, snakeIntersection, teleportSnake, snakeBody} from './snake.js'
-
-import { update as updateP2, draw as drawP2, onP2, getP2Head, P2Intersection, teleportP2, P2Body} from './playerTwo.js'
-
 import { update as updateFood, draw as drawFood} from './food.js'
 import { outsideGrid } from './grid.js'
+import { update as updateFireball, draw as drawFireball } from './fireball.js'
 
 import { draw as drawScore } from './scoreBoard.js'
 
@@ -51,33 +49,6 @@ function removeStart( e ) {
 
 
 function main(currentTime) {
-  if (winP1 && winP2) {
-    drawGame.style = 'visibility: visible; opacity: 0.8;'
-    window.addEventListener('keydown', function(e) {
-      if (e.key === " ") {
-        window.location = '/2P_snake_game/'
-      }
-    })
-    return
-  }
-  else if (winP1) {
-    blueWinScreen.style = 'visibility: visible; opacity: 0.8;'
-    window.addEventListener('keydown', function(e) {
-      if (e.key === " ") {
-        window.location = '/2P_snake_game/'
-      }
-    })
-    return
-  }
-  else if (winP2) {
-    redWinScreen.style = 'visibility: visible; opacity: 0.8;'
-    window.addEventListener('keydown', function(e) {
-      if (e.key === " ") {
-        window.location = '/2P_snake_game/'
-      }
-    })
-    return
-}
 
   window.requestAnimationFrame(main)
   const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000
@@ -93,11 +64,8 @@ window.requestAnimationFrame(main)
 
 function update() {
   updateSnake()
-  updateP2()
-  updateFood()
+  updateFireball()
 
-  checkP2Death()
-  checkP2Wall()
 
   checkDeath()
   checkWall()
@@ -106,27 +74,16 @@ function update() {
 function draw() {
   gameBoard.innerHTML = ''
   drawSnake(gameBoard)
-  drawP2(gameBoard)
-  drawFood(gameBoard)
+  drawFireball(gameBoard)
   drawScore(gameBoard)
 }
 
 function checkDeath() {
-  winP2 = snakeIntersection() || P2Body.length >= 80;
 }
 
-function checkP2Death() {
-  winP1 = P2Intersection() || snakeBody.length >= 80;
-}
 
 function checkWall() {
   if (outsideGrid(getSnakeHead())) {
     teleportSnake()
-  }
-}
-
-function checkP2Wall() {
-  if (outsideGrid(getP2Head())) {
-    teleportP2()
   }
 }

@@ -20,13 +20,13 @@ export function update() {
 }
 
 export function draw(gameBoard) {
-  P2Body.forEach(segment => {
-    const P2Element = document.createElement('div')
-    P2Element.style.gridRowStart = segment.y
-    P2Element.style.gridColumnStart = segment.x
-    P2Element.classList.add('playerTwo')
-    gameBoard.appendChild(P2Element)
-  })
+  // P2Body.forEach(segment => {
+  //   const P2Element = document.createElement('div')
+  //   P2Element.style.gridRowStart = segment.y
+  //   P2Element.style.gridColumnStart = segment.x
+  //   P2Element.classList.add('playerTwo')
+  //   gameBoard.appendChild(P2Element)
+  // })
 }
 
 export function expandP2(amount) {

@@ -1,5 +1,5 @@
-import { getInputDirection } from "./input.js"
 import { onP2, P2Body } from "./playerTwo.js"
+import { createFireball } from "./fireball.js"
 
 export const SNAKE_SPEED = 15 //moves this many times per second
 export const snakeBody = [ 
@@ -7,16 +7,46 @@ export const snakeBody = [
 ]
 let newSegments = 0
 
-export function update() {
-  addSegments()
+window.addEventListener('keydown', e=> {
+  switch (e.key) {
+    case 'w':
+      snakeBody[0].y --
+      break
+    case 's':
+      snakeBody[0].y ++
+      break
+    case 'a':
+      snakeBody[0].x --
+      break
+    case 'd':
+      snakeBody[0].x ++
+      break
 
-  const inputDirection = getInputDirection()
-  for (let i = snakeBody.length -2; i>=0; i--) {
-    snakeBody[i+1] = { ...snakeBody[i] }
+    case 'ArrowUp':
+      createFireball(snakeBody[0].y, snakeBody[0].x, -1, 0)
+      break
+      
+    case 'ArrowLeft':
+      createFireball(snakeBody[0].y, snakeBody[0].x, 0, -1)
+      break
+
+    case 'ArrowDown':
+      createFireball(snakeBody[0].y, snakeBody[0].x, 1, 0)
+
+      break
+    case 'ArrowRight':
+      createFireball(snakeBody[0].y, snakeBody[0].x, 0, 1)
+
+      break
   }
+})
 
-  snakeBody[0].x += inputDirection.x
-  snakeBody[0].y += inputDirection.y
+export function update() {
+
+}
+
+export function move() {
+
 }
 
 export function draw(gameBoard) {
@@ -53,11 +83,11 @@ function equalPositions(pos1, pos2) {
 }
 
 function addSegments() {
-  for (let i = 0; i < newSegments; i++) {
-    snakeBody.push({ ...snakeBody[snakeBody.length - 1] })
-  }
+  // for (let i = 0; i < newSegments; i++) {
+  //   snakeBody.push({ ...snakeBody[snakeBody.length - 1] })
+  // }
 
-  newSegments=0
+  // newSegments=0
 }
 
 export function teleportSnake() {
