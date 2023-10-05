@@ -1,8 +1,8 @@
 import { update as updateSnake, draw as drawSnake, 
   SNAKE_SPEED, onSnake, getSnakeHead, snakeIntersection, teleportSnake, snakeBody} from './snake.js'
-import { update as updateFood, draw as drawFood} from './food.js'
 import { outsideGrid } from './grid.js'
 import { update as updateFireball, draw as drawFireball } from './fireball.js'
+import { update as updateZombie, draw as drawZombie } from './zombie.js'
 
 import { draw as drawScore } from './scoreBoard.js'
 
@@ -65,7 +65,7 @@ window.requestAnimationFrame(main)
 function update() {
   updateSnake()
   updateFireball()
-
+    updateZombie()
 
   checkDeath()
   checkWall()
@@ -76,6 +76,7 @@ function draw() {
   drawSnake(gameBoard)
   drawFireball(gameBoard)
   drawScore(gameBoard)
+  drawZombie(gameBoard)
 }
 
 function checkDeath() {

@@ -1,5 +1,5 @@
 import { onSnake, expandSnake } from './snake.js'
-import { onP2, expandP2 } from './playerTwo.js'
+// import { onP2, expandP2 } from './playerTwo.js'
 import { randomGridPosition } from './grid.js'
 import { draw as drawScore, scoreRed, scoreBlue } from './scoreBoard.js'
 import { gameBoard } from './game.js'

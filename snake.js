@@ -1,5 +1,4 @@
-import { onP2, P2Body } from "./playerTwo.js"
-import { createFireball } from "./fireball.js"
+import { createFireball, fireball } from "./fireball.js"
 
 export const SNAKE_SPEED = 15 //moves this many times per second
 export const snakeBody = [ 
@@ -23,21 +22,23 @@ window.addEventListener('keydown', e=> {
       break
 
     case 'ArrowUp':
-      createFireball(snakeBody[0].y, snakeBody[0].x, -1, 0)
+      if (fireball.power==0)
+        createFireball(snakeBody[0].y, snakeBody[0].x, -1, 0)
       break
-      
     case 'ArrowLeft':
-      createFireball(snakeBody[0].y, snakeBody[0].x, 0, -1)
+      if (fireball.power==0)
+        createFireball(snakeBody[0].y, snakeBody[0].x, 0, -1)
       break
-
     case 'ArrowDown':
-      createFireball(snakeBody[0].y, snakeBody[0].x, 1, 0)
-
+      if (fireball.power==0)
+        createFireball(snakeBody[0].y, snakeBody[0].x, 1, 0)
       break
     case 'ArrowRight':
-      createFireball(snakeBody[0].y, snakeBody[0].x, 0, 1)
-
+      if (fireball.power==0)
+        createFireball(snakeBody[0].y, snakeBody[0].x, 0, 1)
       break
+
+
   }
 })
 

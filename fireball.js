@@ -1,5 +1,5 @@
-let fireball = {
-  x: 0, y: 0, power: 0
+export let fireball = {
+  x: 5, y: 5, power: 0
 }
 
 let direction = {
@@ -16,13 +16,13 @@ export function update() {
 }
 
 export function createFireball(x, y, dirX, dirY) {
-    fireball.x = x
-    fireball.y = y
+  fireball.x = x
+  fireball.y = y
 
-    direction.x = dirX
-    direction.y = dirY
+  direction.x = dirX
+  direction.y = dirY
 
-    fireball.power = 10
+  fireball.power = 10
 }
 
 
