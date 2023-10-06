@@ -2,6 +2,7 @@ import { update as updateSnake, draw as drawSnake,
   SNAKE_SPEED, onSnake, getSnakeHead, snakeIntersection, teleportSnake, snakeBody} from './snake.js'
 import { outsideGrid } from './grid.js'
 import { update as updateFireball, draw as drawFireball } from './fireball.js'
+import { update as updateZap, draw as drawZap } from './zap.js'
 import { update as updateZombie, draw as drawZombie } from './zombie.js'
 
 import { draw as drawScore } from './scoreBoard.js'
@@ -27,6 +28,7 @@ function removeStart( e ) {
     e.key === 'a' ||
     e.key === 's' ||
     e.key === 'd' ||
+    e.key === 'z' ||
     e.key === 'ArrowUp' ||
     e.key === 'ArrowDown' ||
     e.key === 'ArrowLeft' ||
@@ -65,7 +67,8 @@ window.requestAnimationFrame(main)
 function update() {
   updateSnake()
   updateFireball()
-    updateZombie()
+  updateZap()
+  updateZombie()
 
   checkDeath()
   checkWall()
@@ -77,6 +80,7 @@ function draw() {
   drawFireball(gameBoard)
   drawScore(gameBoard)
   drawZombie(gameBoard)
+  drawZap(gameBoard)
 }
 
 function checkDeath() {

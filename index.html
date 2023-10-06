@@ -20,13 +20,13 @@
     }
 
     #game-board {
-      background-color: rgb(29, 29, 29);
+      background-color: rgb(88, 119, 90);
       width: 95vmin;
       height: 95vmin;
 
       display: grid;
-      grid-template-rows: repeat(30, 1fr);
-      grid-template-columns: repeat(30, 1fr);
+      grid-template-rows: repeat(25, 1fr);
+      grid-template-columns: repeat(25, 1fr);
 
       border-color: white;
       border-width: 1.5px;
@@ -35,28 +35,36 @@
 
     .snake {
       /* border-color: black; */
-      border-width: 1.5px;
+      /* border-width: 1.5px;
       border-style: solid;
-      border-radius: 30%;
+      border-radius: 30%; */
       /* set image as background */
-      background-image: url("images/wizard.png");
-      background-size: 110% 110%;
+      background-image: url("images/wiz.png");
+      background-size: 100% 100%;
     }
 
     .fire {
       /* background-color: rgb(255, 176, 176); */
-      border-color: black;
-      border-width: 1.5px;
+      /* border-width: 1.5px;
       border-style: solid;
-      border-radius: 50%;
+      border-radius: 50%; */
       /* set image as background */
-      background-image: url("images/fire.svg");
+      background-image: url("images/feu2.png");
+      background-size: 100% 100%;
+    }
+
+    .zap {
+      /* background-color: rgb(255, 176, 176); */
+      /* border-width: 1.5px;
+      border-style: solid;
+      border-radius: 50%; */
+      /* set image as background */
+      background-image: url("images/zap.png");
       background-size: 100% 100%;
     }
 
     .alive {
       background-color: rgb(4, 255, 0);
-      border-color: black;
       border-width: 1.5px;
       border-style: solid;
       border-radius: 30%;
@@ -64,7 +72,6 @@
 
     .dead {
       background-color: rgb(50, 68, 50);
-      border-color: black;
       border-width: 1.5px;
       border-style: solid;
       border-radius: 30%;
@@ -72,7 +79,6 @@
 
     .food {
       background-color: rgb(255, 213, 0);
-      border-color: black;
       border-width: 1.5px;
       border-style: solid;
       border-radius: 49% 51% 51% 49% / 77% 77% 23% 23% ;

@@ -1,4 +1,5 @@
 import { createFireball, fireball } from "./fireball.js"
+import { createZap, zap } from "./zap.js"
 
 export const SNAKE_SPEED = 15 //moves this many times per second
 export const snakeBody = [ 
@@ -36,6 +37,10 @@ window.addEventListener('keydown', e=> {
     case 'ArrowRight':
       if (fireball.power==0)
         createFireball(snakeBody[0].y, snakeBody[0].x, 0, 1)
+      break
+    case 'z':
+      if (zap.power==0)
+        createZap(snakeBody[0].y, snakeBody[0].x, 0, 1)
       break
 
 
