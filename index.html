@@ -13,7 +13,7 @@
       height: 100vh;
       width: 100vw;
       display: flex;
-      justify-content: center;
+      justify-content:space-around;
       align-items: center;
       margin: 0;
       background-color: black;
@@ -34,7 +34,7 @@
     }
 
     .square {
-      border-color: rgb(162, 230, 153);
+      border-color: rgb(113, 193, 102);
       border-width: 0.5px;
       border-style: solid;
     }
@@ -113,16 +113,30 @@
       width: 60vmin;
     }
 
+    .elements {
+      display: flex;
+      justify-content: space-between;
+      width:min-content;
+      gap: 5vmin;
+    }
+
   </style>
 
   <script src="game.js" defer type="module"></script>
 
 </head>
 <body>
-  <img id="start" class = "menu" src="images/start.svg">
-  <img id="blue-win" class = "menu" src="images/blue_win.svg">
-  <img id="red-win" class = "menu" src="images/red_win.svg">
-  <img id="draw-game" class = "menu" src="images/draw.svg">
+
+  <div class="elementPicker">
+    <div class="menu">
+      <h3>Choose your element</h3>
+      <div class="elements">
+        <p id="fireSelect">1: Fire</p>
+        <p id="zapSelect">2: Zap</p>
+        <p id="iceSelect">3: Ice</p>
+      </div>
+    </div>
+  </div>
 
   <div id="game-board"></div>
 </body>

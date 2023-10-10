@@ -5,19 +5,19 @@ import { update as updateFireball, draw as drawFireball } from './fireball.js'
 import { update as updateZap, draw as drawZap } from './zap.js'
 import { update as updateZombie, draw as drawZombie } from './zombie.js'
 
-import { draw as drawScore } from './scoreBoard.js'
+// import { draw as drawScore } from './scoreBoard.js'
 
 let lastRenderTime = 0
 let winP2 = false
 let winP1 = false
 export const gameBoard = document.getElementById('game-board')
 
-const blueWinScreen = document.getElementById('blue-win')
-blueWinScreen.style = 'visibility: hidden;'
-const redWinScreen = document.getElementById('red-win')
-redWinScreen.style = 'visibility: hidden;'
-const drawGame = document.getElementById('draw-game')
-drawGame.style = 'visibility: hidden;'
+// const blueWinScreen = document.getElementById('blue-win')
+// blueWinScreen.style = 'visibility: hidden;'
+// const redWinScreen = document.getElementById('red-win')
+// redWinScreen.style = 'visibility: hidden;'
+// const drawGame = document.getElementById('draw-game')
+// drawGame.style = 'visibility: hidden;'
 
 window.addEventListener("keydown", removeStart);
 
@@ -78,7 +78,7 @@ function draw() {
   gameBoard.innerHTML = ''
   drawwizard(gameBoard)
   drawFireball(gameBoard)
-  drawScore(gameBoard)
+  // drawScore(gameBoard)
   drawZombie(gameBoard)
   drawZap(gameBoard)
 

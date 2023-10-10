@@ -29,7 +29,7 @@ export function createZap(x, y, dirX, dirY) {
   direction.x = dirX
   direction.y = dirY
 
-  zap.power = 7
+  zap.power = 5
 }
 
 
@@ -43,13 +43,16 @@ export function draw(gameBoard) {
   } else if (zap.power==1) {
     console.log('zap')
 
-    for (let i=zap.x-1; i<=zap.x+1; i++) {
-      for (let j=zap.y-1; j<=zap.y+1; j++) {
+    for (let i=zap.x-2; i<=zap.x+2; i++) {
+      for (let j=zap.y-2; j<=zap.y+2; j++) {
         const zapElement = document.createElement('div')
         zapElement.style.gridRowStart = i
         zapElement.style.gridColumnStart = j
         zapElement.classList.add('zap')
-        gameBoard.appendChild(zapElement)
+        // make diamond shape
+        if (Math.abs(i-zap.x)+Math.abs(j-zap.y)<=2) {
+          gameBoard.appendChild(zapElement)
+        }
       }
     }
 

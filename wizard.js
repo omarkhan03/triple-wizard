@@ -1,13 +1,13 @@
 import { createFireball, fireball } from "./fireball.js"
 import { createZap, zap } from "./zap.js"
+import { selection as elementSelection } from "./select.js"
+
 
 // export const wizard_SPEED = 15 //moves this many times per second
-export const wizardBody = { x: 25, y: 4 }
+export const wizardBody = { x: 13, y: 23 }
 
 
 window.addEventListener('keydown', e=> {
-
-
 
   switch (e.key) {
     case 'w':
@@ -24,7 +24,6 @@ window.addEventListener('keydown', e=> {
       if (wizardBody.y < 25) {
         wizardBody.y ++
       }
-    
 
       break
     case 'a':
@@ -34,41 +33,59 @@ window.addEventListener('keydown', e=> {
         wizardBody.x --
       }
 
-
       break
     case 'd':
       // edge detection
       if (wizardBody.x < 25) {
         wizardBody.x ++
       }
-      
 
       break
 
     case 'ArrowUp':
-      if (fireball.power==0)
-        createFireball(wizardBody.y, wizardBody.x, -1, 0)
+      attack('up')
       break
     case 'ArrowLeft':
-      if (fireball.power==0)
-        createFireball(wizardBody.y, wizardBody.x, 0, -1)
+      attack('left')
       break
     case 'ArrowDown':
-      if (fireball.power==0)
-        createFireball(wizardBody.y, wizardBody.x, 1, 0)
+      attack('down')
       break
     case 'ArrowRight':
-      if (fireball.power==0)
-        createFireball(wizardBody.y, wizardBody.x, 0, 1)
+      attack('right')
       break
-    case 'z':
-      if (zap.power==0)
-        createZap(wizardBody.y, wizardBody.x, 0, 1)
-      break
-
 
   }
 })
+
+export function attack(direction) {
+  if (elementSelection == 'fire' && fireball.power==0)
+  {
+    if (direction == 'up') {
+      createFireball(wizardBody.y, wizardBody.x, -1, 0)
+    } else if (direction == 'down') {
+      createFireball(wizardBody.y, wizardBody.x, 1, 0)
+    } else if (direction == 'left') {
+      createFireball(wizardBody.y, wizardBody.x, 0, -1)
+    } else if (direction == 'right') { 
+      createFireball(wizardBody.y, wizardBody.x, 0, 1)
+    }
+  }
+  else if (elementSelection == 'zap' && zap.power==0) {
+    
+    if (direction == 'up') {
+      createZap(wizardBody.y, wizardBody.x, -1, 0)
+    } else if (direction == 'down') {
+      createZap(wizardBody.y, wizardBody.x, 1, 0)
+    } else if (direction == 'left') {
+      createZap(wizardBody.y, wizardBody.x, 0, -1)
+    } else if (direction == 'right') { 
+      createZap(wizardBody.y, wizardBody.x, 0, 1)
+    }
+    
+  }
+}
+
 
 export function update() {
 
