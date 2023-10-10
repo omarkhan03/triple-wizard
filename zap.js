@@ -13,6 +13,13 @@ export function update() {
   if (zap.power > 0) {
     zap.power --
   }
+
+  // edge detection
+  if (zap.x > 25 || zap.y > 25 || zap.x < 1 || zap.y < 1) {
+    zap.power = 0
+    zap.x = 0;
+    zap.y = 0;
+  }
 }
 
 export function createZap(x, y, dirX, dirY) {

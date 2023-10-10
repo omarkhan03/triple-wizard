@@ -13,6 +13,13 @@ export function update() {
   if (fireball.power > 0) {
     fireball.power --
   }
+
+  // edge detection
+  if (fireball.x > 25 || fireball.y > 25 || fireball.x < 1 || fireball.y < 1) {
+    fireball.power = 0
+    fireball.x = 0;
+    fireball.y = 0;
+  }
 }
 
 export function createFireball(x, y, dirX, dirY) {

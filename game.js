@@ -1,5 +1,5 @@
-import { update as updateSnake, draw as drawSnake, 
-  SNAKE_SPEED, onSnake, getSnakeHead, snakeIntersection, teleportSnake, snakeBody} from './snake.js'
+import { update as updatewizard, draw as drawwizard, 
+   onwizard, getwizardPos, wizardIntersection, teleportwizard, wizardBody} from './wizard.js'
 import { outsideGrid } from './grid.js'
 import { update as updateFireball, draw as drawFireball } from './fireball.js'
 import { update as updateZap, draw as drawZap } from './zap.js'
@@ -54,7 +54,7 @@ function main(currentTime) {
 
   window.requestAnimationFrame(main)
   const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000
-  if (secondsSinceLastRender < 1/SNAKE_SPEED) return
+  if (secondsSinceLastRender < 1/10) return // fps
    
   lastRenderTime = currentTime
 
@@ -65,7 +65,7 @@ function main(currentTime) {
 window.requestAnimationFrame(main)
 
 function update() {
-  updateSnake()
+  updatewizard()
   updateFireball()
   updateZap()
   updateZombie()
@@ -76,11 +76,22 @@ function update() {
 
 function draw() {
   gameBoard.innerHTML = ''
-  drawSnake(gameBoard)
+  drawwizard(gameBoard)
   drawFireball(gameBoard)
   drawScore(gameBoard)
   drawZombie(gameBoard)
   drawZap(gameBoard)
+
+
+  for (let i=0; i<=25; i++) {
+    for (let j=0; j<=25; j++) {
+      const square = document.createElement('div')
+      square.style.gridRowStart = i
+      square.style.gridColumnStart = j
+      square.classList.add('square')
+      gameBoard.appendChild(square)
+    }
+  }
 }
 
 function checkDeath() {
@@ -88,7 +99,7 @@ function checkDeath() {
 
 
 function checkWall() {
-  if (outsideGrid(getSnakeHead())) {
-    teleportSnake()
+  if (outsideGrid(getwizardPos())) {
+    teleportwizard()
   }
 }

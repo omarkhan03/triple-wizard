@@ -1,4 +1,4 @@
-import { onSnake, expandSnake } from './snake.js'
+import { onwizard, expandwizard } from './wizard.js'
 // import { onP2, expandP2 } from './playerTwo.js'
 import { randomGridPosition } from './grid.js'
 import { draw as drawScore, scoreRed, scoreBlue } from './scoreBoard.js'
@@ -13,8 +13,8 @@ let food = [
 const EXPANSION_RATE = 2
 
 export function update() {
-  if (onSnake(food[0])) {
-    expandSnake(EXPANSION_RATE)
+  if (onwizard(food[0])) {
+    expandwizard(EXPANSION_RATE)
     food[0] = getRandomFoodPosition()
     scoreBlue()
     drawScore(gameBoard)
@@ -26,8 +26,8 @@ export function update() {
     drawScore(gameBoard)
   }
 
-  if (onSnake(food[1])) {
-    expandSnake(EXPANSION_RATE)
+  if (onwizard(food[1])) {
+    expandwizard(EXPANSION_RATE)
     food[1] = getRandomFoodPosition()
     scoreBlue()
     drawScore(gameBoard)
@@ -39,8 +39,8 @@ export function update() {
     drawScore(gameBoard)
   }
 
-  if (onSnake(food[2])) {
-    expandSnake(EXPANSION_RATE)
+  if (onwizard(food[2])) {
+    expandwizard(EXPANSION_RATE)
     food[2] = getRandomFoodPosition()
     scoreBlue()
     drawScore(gameBoard)
@@ -75,7 +75,7 @@ export function draw(gameBoard) {
 
 function getRandomFoodPosition() {
   let newFoodPosition
-  while (newFoodPosition == null || onSnake(newFoodPosition)) {
+  while (newFoodPosition == null || onwizard(newFoodPosition)) {
     newFoodPosition = randomGridPosition()
   }
   return newFoodPosition
