@@ -2,44 +2,68 @@ import { createFireball, fireball } from "./fireball.js"
 import { createZap, zap } from "./zap.js"
 
 // export const wizard_SPEED = 15 //moves this many times per second
-export const wizardBody = [ 
-  { x: 25, y: 4 },
-]
+export const wizardBody = { x: 25, y: 4 }
+
 
 window.addEventListener('keydown', e=> {
+
+
+
   switch (e.key) {
     case 'w':
-      wizardBody[0].y --
+
+      // edge detection
+      if (wizardBody.y > 1) {
+        wizardBody.y --
+      }
+
       break
     case 's':
-      wizardBody[0].y ++
+
+      // edge detection
+      if (wizardBody.y < 25) {
+        wizardBody.y ++
+      }
+    
+
       break
     case 'a':
-      wizardBody[0].x --
+
+      // edge detection
+      if (wizardBody.x > 1) {
+        wizardBody.x --
+      }
+
+
       break
     case 'd':
-      wizardBody[0].x ++
+      // edge detection
+      if (wizardBody.x < 25) {
+        wizardBody.x ++
+      }
+      
+
       break
 
     case 'ArrowUp':
       if (fireball.power==0)
-        createFireball(wizardBody[0].y, wizardBody[0].x, -1, 0)
+        createFireball(wizardBody.y, wizardBody.x, -1, 0)
       break
     case 'ArrowLeft':
       if (fireball.power==0)
-        createFireball(wizardBody[0].y, wizardBody[0].x, 0, -1)
+        createFireball(wizardBody.y, wizardBody.x, 0, -1)
       break
     case 'ArrowDown':
       if (fireball.power==0)
-        createFireball(wizardBody[0].y, wizardBody[0].x, 1, 0)
+        createFireball(wizardBody.y, wizardBody.x, 1, 0)
       break
     case 'ArrowRight':
       if (fireball.power==0)
-        createFireball(wizardBody[0].y, wizardBody[0].x, 0, 1)
+        createFireball(wizardBody.y, wizardBody.x, 0, 1)
       break
     case 'z':
       if (zap.power==0)
-        createZap(wizardBody[0].y, wizardBody[0].x, 0, 1)
+        createZap(wizardBody.y, wizardBody.x, 0, 1)
       break
 
 
@@ -55,13 +79,11 @@ export function move() {
 }
 
 export function draw(gameBoard) {
-  wizardBody.forEach(segment => {
     const wizardElement = document.createElement('div')
-    wizardElement.style.gridRowStart = segment.y
-    wizardElement.style.gridColumnStart = segment.x
+    wizardElement.style.gridRowStart = wizardBody.y
+    wizardElement.style.gridColumnStart = wizardBody.x
     wizardElement.classList.add('wizard')
     gameBoard.appendChild(wizardElement)
-  })
 }
 
 export function onwizard(position, { ignoreHead = false } = {}) {
@@ -72,11 +94,11 @@ export function onwizard(position, { ignoreHead = false } = {}) {
 }
 
 export function getwizardPos() {
-  return wizardBody[0]
+  return wizardBody
 }
 
 export function wizardIntersection() {
-  return onwizard(wizardBody[0], { ignoreHead: true }) || onP2(wizardBody[0], { ignoreHead: false })
+  return onwizard(wizardBody, { ignoreHead: true }) || onP2(wizardBody, { ignoreHead: false })
 }
 
 function equalPositions(pos1, pos2) {

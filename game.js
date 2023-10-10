@@ -1,4 +1,4 @@
-import { update as updatewizard, draw as drawwizard, 
+import { update as updateWizard, draw as drawwizard, 
    onwizard, getwizardPos, wizardIntersection, teleportwizard, wizardBody} from './wizard.js'
 import { outsideGrid } from './grid.js'
 import { update as updateFireball, draw as drawFireball } from './fireball.js'
@@ -65,7 +65,7 @@ function main(currentTime) {
 window.requestAnimationFrame(main)
 
 function update() {
-  updatewizard()
+  updateWizard()
   updateFireball()
   updateZap()
   updateZombie()
