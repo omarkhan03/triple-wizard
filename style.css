@@ -2,10 +2,11 @@ body {
   height: 100vh;
   width: 100vw;
   display: flex;
-  justify-content:space-around;
+  justify-content:center;
   align-items: center;
   margin: 0;
-  background-color: black;
+  background-color: rgb(30, 38, 34);
+  font-family: 'Source Serif 4';
 }
 
 #game-board {
@@ -29,31 +30,16 @@ body {
 }
 
 .wizard {
-  /* border-color: black; */
-  /* border-width: 1.5px;
-  border-style: solid;
-  border-radius: 30%; */
-  /* set image as background */
-  background-image: url("images/wiz.png");
+  background-image: url("images/wizzy.png");
   background-size: 100% 100%;
 }
 
 .fire {
-  /* background-color: rgb(255, 176, 176); */
-  /* border-width: 1.5px;
-  border-style: solid;
-  border-radius: 50%; */
-  /* set image as background */
-  background-image: url("images/feu2.png");
+  background-image: url("images/fire.png");
   background-size: 100% 100%;
 }
 
 .zap {
-  /* background-color: rgb(255, 176, 176); */
-  /* border-width: 1.5px;
-  border-style: solid;
-  border-radius: 50%; */
-  /* set image as background */
   background-image: url("images/zap.png");
   background-size: 100% 100%;
 }
@@ -72,34 +58,14 @@ body {
   border-radius: 30%;
 }
 
-.food {
-  background-color: rgb(255, 213, 0);
-  border-width: 1.5px;
-  border-style: solid;
-  border-radius: 49% 51% 51% 49% / 77% 77% 23% 23% ;
-}
-
-.redScore {
-  color: rgb(255, 120, 96);
-  position: fixed;
-  margin: 5vmin;
-  font-size: 30px;
-  font-family: 'Roboto', sans-serif;
-}
-
-.blueScore {
-  color: rgb(66, 189, 255);
-  position: fixed;
-  margin-left: 88vmin;
-  margin-top: 5vmin;
-  font-size: 30px;
-  font-family: 'Roboto', sans-serif;
-}
-
-.menu {
+.p1menu {
   color: white;
-  position: fixed;
-  width: 60vmin;
+  margin-right: 3rem;
+}
+
+.p2menu {
+  color: white;
+  margin-left: 3rem;
 }
 
 .elements {
@@ -109,3 +75,32 @@ body {
   gap: 5vmin;
 }
 
+.elements img {
+    width: 2.5rem;
+}
+
+.selection {
+    border: 2px solid white;
+}
+
+small p img {
+    width: 1rem;
+}
+
+h3 {
+    color:rgb(145, 224, 255);
+}
+
+small {
+    color:rgb(255, 221, 181)
+}
+
+h1 img {
+    width: 2rem;
+    margin-right: 1rem;
+}
+
+p img {
+    width: 1.5rem;
+    margin-left: 1rem;
+}

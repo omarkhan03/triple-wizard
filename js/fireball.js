@@ -1,45 +1,26 @@
-export let fireball = {
-  x: 5, y: 5, power: 0
-}
+// Import stuff as needed
+// Initialize any necessary variables and exports
+/* Initialize fireball position, power, direction, and source
+   Position is the grid space being occupied by the fireball
+   Power is the amount of grid spaces left for the fireball to travel (remaining range)
+   Direction is the direction which the fireball is travelling in
+   Source is the player whom the fireball belongs to
+*/
 
-let direction = {
-  x: 0, y: 0
-}
-
+// Handles the changing in position of the fireball based on it's position, power, and direction
+// Add a case for edge detection
+// Add a case for if it hits a worm (in which case you update the source player's score)
 export function update() {
-  fireball.x += direction.x
-  fireball.y += direction.y
-
-  if (fireball.power > 0) {
-    fireball.power --
-  }
-
-  // edge detection
-  if (fireball.x > 25 || fireball.y > 25 || fireball.x < 1 || fireball.y < 1) {
-    fireball.power = 0
-    fireball.x = 0;
-    fireball.y = 0;
-  }
+  // TODO
 }
 
+// Sets the x, y, and direction of a fireball when it is fired
 export function createFireball(x, y, dirX, dirY) {
-  fireball.x = x
-  fireball.y = y
-
-  direction.x = dirX
-  direction.y = dirY
-
-  fireball.power = 10
+  // TODO
 }
 
-
+// Handles the drawing of the fireball on the grid
+// The fireball should be drawn only if the power > 0
 export function draw(gameBoard) {
-  if (fireball.power>0) {
-    const fireElement = document.createElement('div')
-    fireElement.style.gridRowStart = fireball.x
-    fireElement.style.gridColumnStart = fireball.y
-    fireElement.classList.add('fire')
-    gameBoard.appendChild(fireElement)
-  }
-
+  // TODO
 }

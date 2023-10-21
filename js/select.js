@@ -1,32 +1,22 @@
-export let selection = 'fire'
+// Import stuff as needed
+// Initialize any necessary variables and exports
+// Retrieve element indicators from DOM
 
-const fireSelect = document.getElementById('fireSelect');
-const zapSelect = document.getElementById('zapSelect');
-const iceSelect = document.getElementById('iceSelect');
-
-fireSelect.style = 'border: 2px solid white;'
-
+/* Handle input for switching elements.
+   If 2 is pressed:
+      switch to the next element for player 1
+      clearSelection()
+      set styling of the chosen element to "selected"
+   If P is pressed:
+      switch to the next element for player 2
+      clearSelection()
+      set styling of the chosen element to "selected"
+*/
 window.addEventListener('keydown', e=> {
-    /* 1-3 */
-    if (e.key === '1') {
-        selection = 'fire'
-        clearSelection()
-        fireSelect.style = 'border: 2px solid white;'
-    }
-    if (e.key === '2') {
-        selection = 'zap'
-        clearSelection()
-        zapSelect.style = 'border: 2px solid white;'
-    }
-    if (e.key === '3') {
-        selection = 'ice'
-        clearSelection()
-        iceSelect.style = 'border: 2px solid white;'
-    }
+    // TODO
 })
 
+// Clear the styling for the element indicators from the DOM
 function clearSelection() {
-    fireSelect.style = 'border: none;'
-    zapSelect.style = 'border: none;'
-    iceSelect.style = 'border: none;'
+    // TODO
 }

@@ -1,61 +1,24 @@
-export let zap = {
-  x: 6, y: 6, power: 0
-}
+// Import stuff as needed
+// Initialize any necessary variables and exports
+/* Initialize zap position, power and direction
+   Position is the grid space being occupied by the zap
+   Power is the amount of grid spaces left for the zap to travel (remaining range)
+   Direction is the direction which the zap is travelling in
+*/
 
-let direction = {
-  x: 0, y: 0
-}
-
+// Handles the changing in position of the zap based on it's position, power, and direction
+// Don't forget to add a case for edge detection
 export function update() {
-  zap.x += direction.x
-  zap.y += direction.y
-
-  if (zap.power > 0) {
-    zap.power --
-  }
-
-  // edge detection
-  if (zap.x > 25 || zap.y > 25 || zap.x < 1 || zap.y < 1) {
-    zap.power = 0
-    zap.x = 0;
-    zap.y = 0;
-  }
+  // TODO
 }
 
+// Sets the x, y, and direction of a zap when it is fired
 export function createZap(x, y, dirX, dirY) {
-  zap.x = x
-  zap.y = y
-
-  direction.x = dirX
-  direction.y = dirY
-
-  zap.power = 5
+  // TODO
 }
 
-
+// Handles the drawing of the zap on the grid
+// The zap should be drawn only if the power > 0
 export function draw(gameBoard) {
-  if (zap.power>1) {
-    const zapElement = document.createElement('div')
-    zapElement.style.gridRowStart = zap.x
-    zapElement.style.gridColumnStart = zap.y
-    zapElement.classList.add('zap')
-    gameBoard.appendChild(zapElement)
-  } else if (zap.power==1) {
-    console.log('zap')
-
-    for (let i=zap.x-2; i<=zap.x+2; i++) {
-      for (let j=zap.y-2; j<=zap.y+2; j++) {
-        const zapElement = document.createElement('div')
-        zapElement.style.gridRowStart = i
-        zapElement.style.gridColumnStart = j
-        zapElement.classList.add('zap')
-        // make diamond shape
-        if (Math.abs(i-zap.x)+Math.abs(j-zap.y)<=2) {
-          gameBoard.appendChild(zapElement)
-        }
-      }
-    }
-
-  }
-
+  // TODO
 }
