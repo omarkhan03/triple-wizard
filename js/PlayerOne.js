@@ -1,7 +1,7 @@
-import { createFireball, fireball } from "./fireball.js"
-import { createZap, zap } from "./zap.js"
-import { selection1 as elementSelection } from "./select.js"
-import { createIce, ice } from "./ice.js"
+import { createFireball, fireball } from "./Fireball.js"
+import { createZap, zap } from "./Zap.js"
+import { selection1 as elementSelection } from "./Select.js"
+import { createIce, ice } from "./Ice.js"
 
 
 // export const wizard_SPEED = 15 //moves this many times per second

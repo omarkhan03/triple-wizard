@@ -1,6 +1,6 @@
-import { createFireball2 as createFireball, fireball2 as fireball } from "./fireball.js"
-import { createZap2 as createZap, zap2 as zap } from "./zap.js"
-import { selection2 as elementSelection } from "./select.js"
+import { createFireball2 as createFireball, fireball2 as fireball } from "./Fireball.js"
+import { createZap2 as createZap, zap2 as zap } from "./Zap.js"
+import { selection2 as elementSelection } from "./Select.js"
 import { createIce2 as createIce, ice2 as ice } from "./ice.js"
 
 

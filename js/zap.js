@@ -11,7 +11,6 @@ export function update() {
   zap.y += direction.y 
 
   if (zap.power > 0) {
-    // console.log("fuck")
     zap.power--
   }
 

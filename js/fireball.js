@@ -1,4 +1,4 @@
-import { worms, spawnWorm } from './worm.js'
+import { worms, spawnWorm, checkWorm } from './Worm.js'
 
 export let fireball = {
   x: 5, y: 5, power: 0
@@ -13,6 +13,8 @@ export function update() {
   fireball.y += direction.y
 
   if (fireball.power > 0) {
+    console.log(fireball.x, fireball.y)
+    checkWorm(fireball.x, fireball.y)
     fireball.power --
   }
 
@@ -42,6 +44,7 @@ export function draw(gameBoard) {
     fireballElement.style.gridColumnStart = fireball.y
     fireballElement.classList.add('fire')
     gameBoard.appendChild(fireballElement)
+
   } else if (fireball.power==1) {
     for (let i=fireball.x-3; i<=fireball.x+3; i++) {
       for (let j=fireball.y-3; j<=fireball.y+3; j++) {
@@ -50,16 +53,7 @@ export function draw(gameBoard) {
         fireballElement.style.gridColumnStart = j
         fireballElement.classList.add('fire')
 
-        
-        //check for worm
-        // for (let k=0; k<worms.length; k++) {
-        //   if (worms[k].x==i && worms[k].y==j) {
-        //     // remove worm
-        //     worms.splice(k, 1)
-        //     spawnWorm()
-        //     console.log('worm killed')
-        //   }
-        // }
+        checkWorm(i, j)
 
         // make diamond shape
         if (Math.abs(i-fireball.x)+Math.abs(j-fireball.y)<=3) {
