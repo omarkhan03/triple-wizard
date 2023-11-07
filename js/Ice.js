@@ -1,3 +1,5 @@
+import { checkWorm } from './Worm.js'
+
 export let ice = {
     x: 6, y: 6, power: 0
 }
@@ -11,6 +13,7 @@ export function update() {
     ice.y += direction.y
 
     if (ice.power > 0) {
+        checkWorm(ice.x, ice.y, 1)
         ice.power --
     }
     
@@ -43,14 +46,17 @@ export function draw(gameBoard) {
     } else if (ice.power==1) {
         console.log('ice')
 
-        for (let i=ice.x-1; i<=ice.x+1; i++) {
-        for (let j=ice.y-1; j<=ice.y+1; j++) {
+        for (let i=ice.x-2; i<=ice.x+2; i++) {
+        for (let j=ice.y-2; j<=ice.y+2; j++) {
             const iceElement = document.createElement('div')
             iceElement.style.gridRowStart = i
             iceElement.style.gridColumnStart = j
             iceElement.classList.add('ice')
+
+            checkWorm(i, j, 1)
+
             // make diamond shape
-            if (Math.abs(i-ice.x)+Math.abs(j-ice.y)<=2) {
+            if (Math.abs(i-ice.x)+Math.abs(j-ice.y)<=3) {
             gameBoard.appendChild(iceElement)
             }
         }
@@ -74,6 +80,7 @@ export function update2() {
     ice2.y += direction2.y
 
     if (ice2.power > 0) {
+        checkWorm(ice.x, ice.y, 2)
         ice2.power --
     }
     
@@ -106,14 +113,17 @@ export function draw2(gameBoard) {
     } else if (ice2.power==1) {
         console.log('ice')
 
-        for (let i=ice2.x-1; i<=ice2.x+1; i++) {
-        for (let j=ice2.y-1; j<=ice2.y+1; j++) {
+        for (let i=ice2.x-2; i<=ice2.x+2; i++) {
+        for (let j=ice2.y-2; j<=ice2.y+2; j++) {
             const ice2Element = document.createElement('div')
             ice2Element.style.gridRowStart = i
             ice2Element.style.gridColumnStart = j
             ice2Element.classList.add('ice')
+
+            checkWorm(i, j, 2)
+
             // make diamond shape
-            if (Math.abs(i-ice2.x)+Math.abs(j-ice2.y)<=2) {
+            if (Math.abs(i-ice2.x)+Math.abs(j-ice2.y)<=3) {
             gameBoard.appendChild(ice2Element)
             }
         }

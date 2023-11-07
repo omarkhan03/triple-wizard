@@ -1,4 +1,4 @@
-import { worms, spawnWorm, checkWorm } from './Worm.js'
+import { checkWorm } from './Worm.js'
 
 export let fireball = {
   x: 5, y: 5, power: 0
@@ -32,7 +32,7 @@ export function createFireball(x, y, dirX, dirY) {
   direction.x = dirX
   direction.y = dirY
 
-  fireball.power = 12
+  fireball.power = 15
 }
 
 
@@ -98,7 +98,7 @@ export function createFireball2(x, y, dirX, dirY) {
   direction2.x = dirX
   direction2.y = dirY
 
-  fireball2.power = 12
+  fireball2.power = 15
 }
 
 

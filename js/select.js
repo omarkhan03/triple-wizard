@@ -20,32 +20,36 @@ zapSelect2.style = 'border: 2px solid white;'
 window.addEventListener('keydown', e=> {
 
     if (e.key === '2') {
-        clearSelection(1)
         if (selection1 == 'fire' && fireball.power == 0) {
+            clearSelection(1)
             selection1 = 'zap'
             zapSelect1.style = 'border: 2px solid white;'
         }
         else if (selection1 == 'zap' && zap.power == 0) {
+            clearSelection(1)
             selection1 = 'ice'
             iceSelect1.style = 'border: 2px solid white;'
         }
         else if (selection1 == 'ice' && ice.power == 0) {
+            clearSelection(1)
             selection1 = 'fire'
             fireSelect1.style = 'border: 2px solid white;'
         }
     }
 
     if (e.key === 'p') {
-        clearSelection(2)
         if (selection2 == 'fire' && fireball.power == 0) {
+             clearSelection(2)
             selection2 = 'zap'
             zapSelect2.style = 'border: 2px solid white;'
         }
         else if (selection2 == 'zap' && zap.power == 0) {
+            clearSelection(2)
             selection2 = 'ice'
             iceSelect2.style = 'border: 2px solid white;'
         }
         else if (selection2 == 'ice' && ice.power == 0) {
+            clearSelection(2)
             selection2 = 'fire'
             fireSelect2.style = 'border: 2px solid white;'
         }

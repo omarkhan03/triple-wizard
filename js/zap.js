@@ -1,3 +1,5 @@
+import { checkWorm } from './Worm.js'
+
 export let zap = {
   x: 6, y: 6, power: 0
 }
@@ -11,6 +13,7 @@ export function update() {
   zap.y += direction.y 
 
   if (zap.power > 0) {
+    checkWorm(zap.x, zap.y, 1)
     zap.power--
   }
 
@@ -29,7 +32,7 @@ export function createZap(x, y, dirX, dirY) {
   direction.x = dirX
   direction.y = dirY
 
-  zap.power = 6
+  zap.power = 7
 }
 
 
@@ -41,7 +44,6 @@ export function draw(gameBoard) {
     zapElement.classList.add('zap')
     gameBoard.appendChild(zapElement)
   } else if (zap.power==1) {
-    // console.log('zap')
 
     for (let i=zap.x-2; i<=zap.x+2; i++) {
       for (let j=zap.y-2; j<=zap.y+2; j++) {
@@ -49,6 +51,9 @@ export function draw(gameBoard) {
         zapElement.style.gridRowStart = i
         zapElement.style.gridColumnStart = j
         zapElement.classList.add('zap')
+
+        checkWorm(i, j, 1)
+
         // make diamond shape
         if (Math.abs(i-zap.x)+Math.abs(j-zap.y)<=2) {
           gameBoard.appendChild(zapElement)
@@ -74,6 +79,7 @@ export function update2() {
   zap2.y += direction2.y
 
   if (zap2.power > 0) {
+    checkWorm(zap.x, zap.y, 2)
     zap2.power --
   }
 
@@ -92,7 +98,7 @@ export function createZap2(x, y, dirX, dirY) {
   direction2.x = dirX
   direction2.y = dirY
 
-  zap2.power = 6
+  zap2.power = 7
 }
 
 
@@ -112,6 +118,9 @@ export function draw2(gameBoard) {
         zap2Element.style.gridRowStart = i
         zap2Element.style.gridColumnStart = j
         zap2Element.classList.add('zap')
+
+        checkWorm(i, j, 2)
+
         // make diamond shape
         if (Math.abs(i-zap2.x)+Math.abs(j-zap2.y)<=2) {
           gameBoard.appendChild(zap2Element)

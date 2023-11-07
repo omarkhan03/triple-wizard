@@ -22,7 +22,6 @@ export function update() {
 }
 
 export function checkWorm(xp, yp, player) {
-    console.log(worms)
     // loop through each worm
     for (let i = 0; i < worms.length; i++) {
         if (xp == worms[i].x && yp == worms[i].y) {
@@ -75,6 +74,9 @@ export function spawnWorm() {
     // }
 }
 
+spawnWorm()
+spawnWorm()
+spawnWorm()
 spawnWorm()
 spawnWorm()
 spawnWorm()
