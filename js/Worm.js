@@ -1,4 +1,4 @@
-import { gameBoard } from './game.js'
+import { gameBoard } from './Game.js'
 
 export let worms = []
 

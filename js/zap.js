@@ -7,10 +7,11 @@ let direction = {
 }
 
 export function update() {
-  zap.x += direction.x
-  zap.y += direction.y
+  zap.x += direction.x 
+  zap.y += direction.y 
 
   if (zap.power > 0) {
+    // console.log("fuck")
     zap.power--
   }
 
@@ -36,12 +37,12 @@ export function createZap(x, y, dirX, dirY) {
 export function draw(gameBoard) {
   if (zap.power>1) {
     const zapElement = document.createElement('div')
-    zapElement.style.gridRowStart = zap.x
+    zapElement.style.gridRowStart = zap.x 
     zapElement.style.gridColumnStart = zap.y
     zapElement.classList.add('zap')
     gameBoard.appendChild(zapElement)
   } else if (zap.power==1) {
-    console.log('zap')
+    // console.log('zap')
 
     for (let i=zap.x-2; i<=zap.x+2; i++) {
       for (let j=zap.y-2; j<=zap.y+2; j++) {

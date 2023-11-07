@@ -52,7 +52,7 @@ window.addEventListener('keydown', e=> {
   }
 })
 
-export function attack(direction) {
+function attack(direction) {
   if (elementSelection == 'fire' && fireball.power==0)
   {
     if (direction == 'up') {
@@ -94,9 +94,7 @@ export function attack(direction) {
 }
 
 
-export function update() {
 
-}
 
 export function move() {
 

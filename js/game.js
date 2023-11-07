@@ -1,5 +1,5 @@
-import { update as updateP1, draw as drawP1} from './PlayerOne.js'
-import { update as updateP2, draw as drawP2} from './PlayerTwo.js'
+import { draw as drawP1} from './PlayerOne.js'
+import { draw as drawP2} from './PlayerTwo.js'
 import { outsideGrid } from './grid.js'
 import { update as updateFireball, draw as drawFireball, update2 as updateFireball2, draw2 as drawFireball2 } from './fireball.js'
 import { update as updateZap, draw as drawZap, update2 as updateZap2, draw2 as drawZap2  } from './zap.js'
@@ -26,9 +26,7 @@ function main(currentTime) {
 window.requestAnimationFrame(main)
 
 function update() {
- updateP1()
- updateP2()
-
+  console.log("fuck")
  updateFireball()
  updateFireball2()
 

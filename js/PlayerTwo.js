@@ -7,14 +7,14 @@ import { createIce2 as createIce, ice2 as ice } from "./ice.js"
 // export const wizard_SPEED = 15 //moves this many times per second
 export const wizardBody = { x: 13, y: 3 }
 
-let attackDirection = "down"
+let attackDirection2 = "down"
 
 
 window.addEventListener('keydown', e=> {
 
   switch (e.key) {
     case 'ArrowUp':
-      attackDirection = "up"
+      attackDirection2 = "up"
       // edge detection
       if (wizardBody.y > 1) {
         wizardBody.y --
@@ -22,7 +22,7 @@ window.addEventListener('keydown', e=> {
 
       break
     case 'ArrowDown':
-      attackDirection = "down"
+      attackDirection2 = "down"
       // edge detection
       if (wizardBody.y < 25) {
         wizardBody.y ++
@@ -30,7 +30,7 @@ window.addEventListener('keydown', e=> {
 
       break
     case 'ArrowLeft':
-      attackDirection = "left"
+      attackDirection2 = "left"
       // edge detection
       if (wizardBody.x > 1) {
         wizardBody.x --
@@ -38,7 +38,7 @@ window.addEventListener('keydown', e=> {
 
       break
     case 'ArrowRight':
-      attackDirection = "right"
+      attackDirection2 = "right"
       // edge detection
       if (wizardBody.x < 25) {
         wizardBody.x ++
@@ -47,12 +47,12 @@ window.addEventListener('keydown', e=> {
       break
 
     case 'o':
-      attack(attackDirection)
+      attack2(attackDirection2)
 
   }
 })
 
-export function attack(direction) {
+function attack2(direction) {
   if (elementSelection == 'fire' && fireball.power==0)
   {
     if (direction == 'up') {
@@ -94,9 +94,7 @@ export function attack(direction) {
 }
 
 
-export function update() {
 
-}
 
 export function move() {
 
