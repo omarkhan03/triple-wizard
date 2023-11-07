@@ -1,22 +1,76 @@
-// Import stuff as needed
-// Initialize any necessary variables and exports
+import { update as updateP1, draw as drawP1} from './PlayerOne.js'
+import { update as updateP2, draw as drawP2} from './PlayerTwo.js'
+import { outsideGrid } from './grid.js'
+import { update as updateFireball, draw as drawFireball, update2 as updateFireball2, draw2 as drawFireball2 } from './fireball.js'
+import { update as updateZap, draw as drawZap, update2 as updateZap2, draw2 as drawZap2  } from './zap.js'
+import { update as updateIce, draw as drawIce, update2 as updateIce2, draw2 as drawIce2 } from './ice.js'
+import { spawnWorm, draw as drawWorm } from './Worm.js'
 
-// Implement a render loop with a currentTime given as input
+let lastRenderTime = 0
+let winP2 = false
+let winP1 = false
+export const gameBoard = document.getElementById('game-board')
+
 function main(currentTime) {
-  // TODO
+
+ window.requestAnimationFrame(main)
+ const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000
+ if (secondsSinceLastRender < 1/2) return // fps
+  
+ lastRenderTime = currentTime
+
+ update()
+ draw()
 }
 
-// Call all of the update functions from other classes
+window.requestAnimationFrame(main)
+
 function update() {
-  // TODO
+ updateP1()
+ updateP2()
+
+ updateFireball()
+ updateFireball2()
+
+ updateZap()
+  updateZap2()
+
+ updateIce()
+  updateIce2()
+
+ checkDeath()
 }
 
-// Call all of the draw functions from other classes, and draw the gameboard automatically
 function draw() {
-  // TODO
+ gameBoard.innerHTML = ''
+ drawP1(gameBoard)
+  drawP2(gameBoard)
+
+ drawFireball(gameBoard)
+  drawFireball2(gameBoard)
+
+ drawZap(gameBoard)
+  drawZap2(gameBoard)
+
+
+ drawIce(gameBoard)
+  drawIce2(gameBoard)
+
+  // drawWorm(gameBoard)
+
+
+
+ for (let i=0; i<=25; i++) {
+   for (let j=0; j<=25; j++) {
+     const square = document.createElement('div')
+     square.style.gridRowStart = i
+     square.style.gridColumnStart = j
+     square.classList.add('square')
+     gameBoard.appendChild(square)
+   }
+ }
 }
 
-// Increment the given player's score. Called when a worm is killed.
-function score(player) {
-  // TODO
+function checkDeath() {
 }
+

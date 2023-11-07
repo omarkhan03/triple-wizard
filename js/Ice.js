@@ -1,24 +1,124 @@
-// Import stuff as needed
-// Initialize any necessary variables and exports
-/* Initialize ice position, power and direction
-   Position is the grid space being occupied by the ice
-   Power is the amount of grid spaces left for the ice to travel (remaining range)
-   Direction is the direction which the ice is travelling in
-*/
-
-// Handles the changing in position of the ice based on it's position, power, and direction
-// Don't forget to add a case for edge detection
-export function update() {
-    // TODO
+export let ice = {
+    x: 6, y: 6, power: 0
 }
   
-// Sets the x, y, and direction of a ice when it is fired
-export function createIce(x, y, dirX, dirY) {
-// TODO
+let direction = {
+    x: 0, y: 0
+}
+  
+export function update() {
+    ice.x += direction.x
+    ice.y += direction.y
+
+    if (ice.power > 0) {
+        ice.power --
+    }
+    
+    // edge detection
+    if (ice.x > 25 || ice.y > 25 || ice.x < 1 || ice.y < 1) {
+        ice.power = 0
+        ice.x = 0;
+        ice.y = 0;
+    }
 }
 
-// Handles the drawing of the ice on the grid
-// The ice should be drawn only if the power > 0
+export function createIce(x, y, dirX, dirY) {
+    ice.x = x
+    ice.y = y
+
+    direction.x = dirX
+    direction.y = dirY
+
+    ice.power = 3
+}
+
+
 export function draw(gameBoard) {
-// TODO
+    if (ice.power>1) {
+        const iceElement = document.createElement('div')
+        iceElement.style.gridRowStart = ice.x
+        iceElement.style.gridColumnStart = ice.y
+        iceElement.classList.add('ice')
+        gameBoard.appendChild(iceElement)
+    } else if (ice.power==1) {
+        console.log('ice')
+
+        for (let i=ice.x-1; i<=ice.x+1; i++) {
+        for (let j=ice.y-1; j<=ice.y+1; j++) {
+            const iceElement = document.createElement('div')
+            iceElement.style.gridRowStart = i
+            iceElement.style.gridColumnStart = j
+            iceElement.classList.add('ice')
+            // make diamond shape
+            if (Math.abs(i-ice.x)+Math.abs(j-ice.y)<=2) {
+            gameBoard.appendChild(iceElement)
+            }
+        }
+        }
+
+    }
+
+}
+
+
+export let ice2 = {
+    x: 6, y: 6, power: 0
+}
+  
+let direction2 = {
+    x: 0, y: 0
+}
+  
+export function update2() {
+    ice2.x += direction2.x
+    ice2.y += direction2.y
+
+    if (ice2.power > 0) {
+        ice2.power --
+    }
+    
+    // edge detection
+    if (ice2.x > 25 || ice2.y > 25 || ice2.x < 1 || ice2.y < 1) {
+        ice2.power = 0
+        ice2.x = 0;
+        ice2.y = 0;
+    }
+}
+
+export function createIce2(x, y, dirX, dirY) {
+    ice2.x = x
+    ice2.y = y
+
+    direction2.x = dirX
+    direction2.y = dirY
+
+    ice2.power = 3
+}
+
+
+export function draw2(gameBoard) {
+    if (ice2.power>1) {
+        const ice2Element = document.createElement('div')
+        ice2Element.style.gridRowStart = ice2.x
+        ice2Element.style.gridColumnStart = ice2.y
+        ice2Element.classList.add('ice')
+        gameBoard.appendChild(ice2Element)
+    } else if (ice2.power==1) {
+        console.log('ice')
+
+        for (let i=ice2.x-1; i<=ice2.x+1; i++) {
+        for (let j=ice2.y-1; j<=ice2.y+1; j++) {
+            const ice2Element = document.createElement('div')
+            ice2Element.style.gridRowStart = i
+            ice2Element.style.gridColumnStart = j
+            ice2Element.classList.add('ice')
+            // make diamond shape
+            if (Math.abs(i-ice2.x)+Math.abs(j-ice2.y)<=2) {
+            gameBoard.appendChild(ice2Element)
+            }
+        }
+        }
+
+    }
+
 }

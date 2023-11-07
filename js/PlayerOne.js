@@ -1,38 +1,154 @@
-// Import stuff as needed
-// Initialize any necessary variables and exports
+import { createFireball, fireball } from "./fireball.js"
+import { createZap, zap } from "./zap.js"
+import { selection1 as elementSelection } from "./select.js"
+import { createIce, ice } from "./ice.js"
 
-// Handle inputs for player 1
-// WASD to move, 1 to shoot, 2 to toggle element
+
+// export const wizard_SPEED = 15 //moves this many times per second
+export const wizardBody = { x: 13, y: 23 }
+
+let attackDirection = "up"
+
+
 window.addEventListener('keydown', e=> {
-  // TODO
+
+  switch (e.key) {
+    case 'w':
+      attackDirection = "up"
+      // edge detection
+      if (wizardBody.y > 1) {
+        wizardBody.y --
+      }
+
+      break
+    case 's':
+      attackDirection = "down"
+      // edge detection
+      if (wizardBody.y < 25) {
+        wizardBody.y ++
+      }
+
+      break
+    case 'a':
+      attackDirection = "left"
+      // edge detection
+      if (wizardBody.x > 1) {
+        wizardBody.x --
+      }
+
+      break
+    case 'd':
+      attackDirection = "right"
+      // edge detection
+      if (wizardBody.x < 25) {
+        wizardBody.x ++
+      }
+
+      break
+
+    case '1':
+      attack(attackDirection)
+
+  }
 })
 
-// Handle an attack event, with the direction of attack given as input
-// If fire, then it should call the createFireball function from fireball.js
-// If zap, then it should call the createZap function from zap.js
-// If ice, then it should call the createIce function from ice.js
-// Pass the direction of attack into the above functions too
 export function attack(direction) {
-  // TODO
+  if (elementSelection == 'fire' && fireball.power==0)
+  {
+    if (direction == 'up') {
+      createFireball(wizardBody.y, wizardBody.x, -1, 0)
+    } else if (direction == 'down') {
+      createFireball(wizardBody.y, wizardBody.x, 1, 0)
+    } else if (direction == 'left') {
+      createFireball(wizardBody.y, wizardBody.x, 0, -1)
+    } else if (direction == 'right') { 
+      createFireball(wizardBody.y, wizardBody.x, 0, 1)
+    }
+  }
+  else if (elementSelection == 'zap' && zap.power==0) {
+    
+    if (direction == 'up') {
+      createZap(wizardBody.y, wizardBody.x, -1, 0)
+    } else if (direction == 'down') {
+      createZap(wizardBody.y, wizardBody.x, 1, 0)
+    } else if (direction == 'left') {
+      createZap(wizardBody.y, wizardBody.x, 0, -1)
+    } else if (direction == 'right') { 
+      createZap(wizardBody.y, wizardBody.x, 0, 1)
+    }
+    
+  }
+  else if (elementSelection == 'ice' && ice.power==0) {
+    
+    if (direction == 'up') {
+      createIce(wizardBody.y, wizardBody.x, -1, 0)
+    } else if (direction == 'down') {
+      createIce(wizardBody.y, wizardBody.x, 1, 0)
+    } else if (direction == 'left') {
+      createIce(wizardBody.y, wizardBody.x, 0, -1)
+    } else if (direction == 'right') { 
+      createIce(wizardBody.y, wizardBody.x, 0, 1)
+    }
+    
+  }
 }
 
-// Handle the drawing of player 1 on the grid
-// This should create a div, assign x and y values, then append to gameboard
+
+export function update() {
+
+}
+
+export function move() {
+
+}
+
 export function draw(gameBoard) {
-  // TODO
+    const wizardElement = document.createElement('div')
+    wizardElement.style.gridRowStart = wizardBody.y
+    wizardElement.style.gridColumnStart = wizardBody.x
+    wizardElement.classList.add('wizard')
+    gameBoard.appendChild(wizardElement)
 }
 
-// Return true if the given grid position is the same as the wizard's position
-export function onWizard(position) {
-  // TODO
+export function onwizard(position, { ignoreHead = false } = {}) {
+  return wizardBody.some((segment, index) => {
+    if (ignoreHead && index === 0) return false
+    return equalPositions(segment, position)
+  })
 }
 
-// Return the position of the wizard
-export function getWizardPos() {
-  // return wizardBody
+export function getwizardPos() {
+  return wizardBody
 }
 
-// Return true if the wizard runs into a wall
-export function checkWall() {
-  // TODO
+export function wizardIntersection() {
+  return onwizard(wizardBody, { ignoreHead: true }) || onP2(wizardBody, { ignoreHead: false })
+}
+
+function equalPositions(pos1, pos2) {
+  return pos1.x === pos2.x && pos1.y === pos2.y
+}
+
+export function teleportwizard() {
+  // let oldPos = wizardBody[0]
+
+  // switch(oldPos.x) {
+  //   case 0:
+  //     wizardBody[0] = { x: 25, y: oldPos.y }
+  //     break
+  //   case 25:
+  //     wizardBody[0] = { x: 1, y: oldPos.y }
+  //     break
+
+  //   default:
+
+  //     switch(oldPos.y) {
+  //       case 0:
+  //         wizardBody[0] = { x: oldPos.x, y: 25 }
+  //         break
+  //       case 25:
+  //         wizardBody[0] = { x: oldPos.x, y: 1 }
+  //         break
+  //     }
+  // }
 }

@@ -30,7 +30,12 @@ body {
 }
 
 .wizard {
-  background-image: url("images/wizzy.png");
+  background-image: url("images/p1.png");
+  background-size: 100% 100%;
+}
+
+.wizard2 {
+  background-image: url("images/p2.png");
   background-size: 100% 100%;
 }
 
@@ -44,18 +49,14 @@ body {
   background-size: 100% 100%;
 }
 
-.alive {
-  background-color: rgb(4, 255, 0);
-  border-width: 1.5px;
-  border-style: solid;
-  border-radius: 30%;
+.ice {
+  background-image: url("images/ice.png");
+  background-size: 100% 100%;
 }
 
-.dead {
-  background-color: rgb(50, 68, 50);
-  border-width: 1.5px;
-  border-style: solid;
-  border-radius: 30%;
+.worm {
+  background-image: url("images/worm.png");
+  background-size: 100% 100%;
 }
 
 .p1menu {

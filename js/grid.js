@@ -1,11 +1,15 @@
-// Define the grid size
+const GRID_SIZE = 25
 
-// Return random x and y positions to place worms on the grid
 export function randomGridPosition() {
-  // TODO
+  return {
+    x: Math.floor(Math.random() * GRID_SIZE) +1,
+    y: Math.floor(Math.random() * GRID_SIZE) +1
+  }
 }
 
-// Return random x and y positions to place worms on the grid
 export function outsideGrid(position) {
-  // TODO
+  return (
+    position.x < 1 || position.x > GRID_SIZE ||
+    position.y < 1 || position.y > GRID_SIZE
+  )
 }
