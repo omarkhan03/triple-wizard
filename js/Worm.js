@@ -11,14 +11,23 @@ const p2Score = document.getElementById('p2score')
 export let worms = []
 
 export function update() {
-    // // loop through each worm
-    // for (let i = 0; i < worms.length; i++) {
-    //     if (fireball.x == worms[i].x && fireball.y == worms[i].y) {
-    //         console.log('hit worm')
-    //         worms.splice(i, 1)
-    //         spawnWorm()
-    //     }
-    // }
+    // loop through each worm
+    for (let i = 0; i < worms.length; i++) {
+        // move worm in random direction
+        let direction = Math.floor(Math.random() * 15)
+        if (direction == 0 && worms[i].x < 25) {
+            worms[i].x++
+        }
+        else if (direction == 1 && worms[i].x > 1) {
+            worms[i].x--
+        }
+        else if (direction == 2 && worms[i].y < 25) {
+            worms[i].y++
+        }
+        else if (direction == 3 && worms[i].y > 1) {
+            worms[i].y--
+        }
+    }
 }
 
 export function checkWorm(xp, yp, player) {

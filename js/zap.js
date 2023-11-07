@@ -45,8 +45,8 @@ export function draw(gameBoard) {
     gameBoard.appendChild(zapElement)
   } else if (zap.power==1) {
 
-    for (let i=zap.x-2; i<=zap.x+2; i++) {
-      for (let j=zap.y-2; j<=zap.y+2; j++) {
+    for (let i=zap.x-3; i<=zap.x+3; i++) {
+      for (let j=zap.y-3; j<=zap.y+3; j++) {
         const zapElement = document.createElement('div')
         zapElement.style.gridRowStart = i
         zapElement.style.gridColumnStart = j
@@ -55,7 +55,7 @@ export function draw(gameBoard) {
         checkWorm(i, j, 1)
 
         // make diamond shape
-        if (Math.abs(i-zap.x)+Math.abs(j-zap.y)<=2) {
+        if (Math.abs(i-zap.x)+Math.abs(j-zap.y)<=4) {
           gameBoard.appendChild(zapElement)
         }
       }
@@ -112,8 +112,8 @@ export function draw2(gameBoard) {
   } else if (zap2.power==1) {
     console.log('zap')
 
-    for (let i=zap2.x-2; i<=zap2.x+2; i++) {
-      for (let j=zap2.y-2; j<=zap2.y+2; j++) {
+    for (let i=zap2.x-3; i<=zap2.x+3; i++) {
+      for (let j=zap2.y-3; j<=zap2.y+3; j++) {
         const zap2Element = document.createElement('div')
         zap2Element.style.gridRowStart = i
         zap2Element.style.gridColumnStart = j
@@ -122,7 +122,7 @@ export function draw2(gameBoard) {
         checkWorm(i, j, 2)
 
         // make diamond shape
-        if (Math.abs(i-zap2.x)+Math.abs(j-zap2.y)<=2) {
+        if (Math.abs(i-zap2.x)+Math.abs(j-zap2.y)<=4) {
           gameBoard.appendChild(zap2Element)
         }
       }

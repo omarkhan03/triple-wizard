@@ -37,16 +37,15 @@ export function createFireball(x, y, dirX, dirY) {
 
 
 export function draw(gameBoard) {
-  if (fireball.power>1) {
+  if (fireball.power>0) {
     const fireballElement = document.createElement('div')
     fireballElement.style.gridRowStart = fireball.x
     fireballElement.style.gridColumnStart = fireball.y
     fireballElement.classList.add('fire')
     gameBoard.appendChild(fireballElement)
 
-  } else if (fireball.power==1) {
-    for (let i=fireball.x-3; i<=fireball.x+3; i++) {
-      for (let j=fireball.y-3; j<=fireball.y+3; j++) {
+    for (let i=fireball.x-2; i<=fireball.x+2; i++) {
+      for (let j=fireball.y-2; j<=fireball.y+2; j++) {
         const fireballElement = document.createElement('div')
         fireballElement.style.gridRowStart = i
         fireballElement.style.gridColumnStart = j
@@ -55,14 +54,13 @@ export function draw(gameBoard) {
         checkWorm(i, j, 1)
 
         // make diamond shape
-        if (Math.abs(i-fireball.x)+Math.abs(j-fireball.y)<=3) {
+        if (Math.abs(i-fireball.x)+Math.abs(j-fireball.y)<=2) {
           gameBoard.appendChild(fireballElement)
         }
 
       }
     }
   }
-
 }
 
 
@@ -109,9 +107,9 @@ export function draw2(gameBoard) {
     fireball2Element.style.gridColumnStart = fireball2.y
     fireball2Element.classList.add('fire')
     gameBoard.appendChild(fireball2Element)
-  } else if (fireball2.power==1) {
-    for (let i=fireball2.x-3; i<=fireball2.x+3; i++) {
-      for (let j=fireball2.y-3; j<=fireball2.y+3; j++) {
+
+    for (let i=fireball2.x-2; i<=fireball2.x+2; i++) {
+      for (let j=fireball2.y-2; j<=fireball2.y+2; j++) {
         const fireball2Element = document.createElement('div')
         fireball2Element.style.gridRowStart = i
         fireball2Element.style.gridColumnStart = j
@@ -120,7 +118,7 @@ export function draw2(gameBoard) {
         checkWorm(i, j, 2)
 
         // make diamond shape
-        if (Math.abs(i-fireball2.x)+Math.abs(j-fireball2.y)<=3) {
+        if (Math.abs(i-fireball2.x)+Math.abs(j-fireball2.y)<=2) {
           gameBoard.appendChild(fireball2Element)
         }
 
