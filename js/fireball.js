@@ -13,8 +13,7 @@ export function update() {
   fireball.y += direction.y
 
   if (fireball.power > 0) {
-    console.log(fireball.x, fireball.y)
-    checkWorm(fireball.x, fireball.y)
+    checkWorm(fireball.x, fireball.y, 1)
     fireball.power --
   }
 
@@ -53,7 +52,7 @@ export function draw(gameBoard) {
         fireballElement.style.gridColumnStart = j
         fireballElement.classList.add('fire')
 
-        checkWorm(i, j)
+        checkWorm(i, j, 1)
 
         // make diamond shape
         if (Math.abs(i-fireball.x)+Math.abs(j-fireball.y)<=3) {
@@ -80,6 +79,7 @@ export function update2() {
   fireball2.y += direction2.y
 
   if (fireball2.power > 0) {
+    checkWorm(fireball.x, fireball.y, 2)
     fireball2.power --
   }
 
@@ -116,6 +116,9 @@ export function draw2(gameBoard) {
         fireball2Element.style.gridRowStart = i
         fireball2Element.style.gridColumnStart = j
         fireball2Element.classList.add('fire')
+
+        checkWorm(i, j, 2)
+
         // make diamond shape
         if (Math.abs(i-fireball2.x)+Math.abs(j-fireball2.y)<=3) {
           gameBoard.appendChild(fireball2Element)

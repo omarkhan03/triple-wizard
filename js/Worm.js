@@ -1,6 +1,13 @@
 import { gameBoard } from './Game.js'
 import { fireball } from './Fireball.js'
 
+let wormsKilledP1 = 0
+let wormsKilledP2 = 0
+
+const p1Score = document.getElementById('p1score')
+const p2Score = document.getElementById('p2score')
+
+
 export let worms = []
 
 export function update() {
@@ -14,17 +21,21 @@ export function update() {
     // }
 }
 
-export function checkWorm(xp, yp) {
+export function checkWorm(xp, yp, player) {
     console.log(worms)
     // loop through each worm
     for (let i = 0; i < worms.length; i++) {
         if (xp == worms[i].x && yp == worms[i].y) {
-            console.log('hit worm')
-            console.log(worms)
             worms.splice(i, 1)
-            console.log(worms)
             spawnWorm()
-            console.log(worms)
+            if (player == 1) {
+                wormsKilledP1++
+                p1Score.innerHTML = wormsKilledP1
+            }
+            else if (player == 2) {
+                wormsKilledP2++
+                p2Score.innerHTML = wormsKilledP2
+            }
         }
     }
 }
