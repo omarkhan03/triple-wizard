@@ -79,7 +79,7 @@ export function update2() {
   zap2.y += direction2.y
 
   if (zap2.power > 0) {
-    checkWorm(zap.x, zap.y, 2)
+    checkWorm(zap2.x, zap2.y, 2)
     zap2.power --
   }
 
@@ -112,6 +112,7 @@ export function draw2(gameBoard) {
   } else if (zap2.power==1) {
     console.log('zap')
 
+
     for (let i=zap2.x-3; i<=zap2.x+3; i++) {
       for (let j=zap2.y-3; j<=zap2.y+3; j++) {
         const zap2Element = document.createElement('div')
@@ -122,7 +123,7 @@ export function draw2(gameBoard) {
         checkWorm(i, j, 2)
 
         // make diamond shape
-        if (Math.abs(i-zap2.x)+Math.abs(j-zap2.y)<=4) {
+        if (Math.abs(i-zap2.x)+Math.abs(j-zap2.y)<=5) {
           gameBoard.appendChild(zap2Element)
         }
       }

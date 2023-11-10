@@ -109,3 +109,21 @@ p img {
 span {
   font-size: larger;
 }
+
+.endscreen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 2rem;
+  background-color: rgb(30, 38, 34);
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.endscreen h1 {
+  /* center */
+  text-align: center;
+  color: lightgreen
+}
