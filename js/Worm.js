@@ -1,4 +1,4 @@
-import { gameBoard } from './Game.js'
+import { gameBoard, handleP1Victory, handleP2Victory, handleDraw } from './Game.js'
 import { fireball } from './Fireball.js'
 
 let wormsKilledP1 = 0
@@ -27,6 +27,22 @@ export function update() {
         else if (direction == 3 && worms[i].y > 1) {
             worms[i].y--
         }
+    }
+
+    checkVictory()
+}
+
+function checkVictory() {
+    if (wormsKilledP1 >= 50 && wormsKilledP2 < 50) {
+        handleP1Victory()
+    }
+    else if (wormsKilledP2 >= 50 && wormsKilledP1 < 50) {
+        console.log("player 2 wins!")
+        handleP2Victory()
+    }
+    else if (wormsKilledP2 >= 50 && wormsKilledP1 >= 50) {
+        console.log("draw.")
+        handleDraw()
     }
 }
 
@@ -83,6 +99,18 @@ export function spawnWorm() {
     // }
 }
 
+spawnWorm()
+spawnWorm()
+spawnWorm()
+spawnWorm()
+spawnWorm()
+spawnWorm()
+spawnWorm()
+spawnWorm()
+spawnWorm()
+spawnWorm()
+spawnWorm()
+spawnWorm()
 spawnWorm()
 spawnWorm()
 spawnWorm()

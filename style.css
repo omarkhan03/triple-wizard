@@ -127,3 +127,7 @@ span {
   text-align: center;
   color: lightgreen
 }
+
+.hidden {
+  display: none;
+}

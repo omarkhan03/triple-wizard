@@ -1,6 +1,7 @@
 import { fireball } from './Fireball.js'
 import { zap } from './Zap.js'
 import { ice } from './Ice.js'
+import { gameOn } from "./Game.js"
 
 export let selection1 = 'zap'
 export let selection2 = 'zap'
@@ -19,7 +20,7 @@ zapSelect2.style = 'border: 2px solid white;'
 
 window.addEventListener('keydown', e=> {
 
-    if (e.key === '2') {
+    if  (gameOn && e.key === '2') {
         if (selection1 == 'fire' && fireball.power == 0) {
             clearSelection(1)
             selection1 = 'zap'
@@ -37,9 +38,9 @@ window.addEventListener('keydown', e=> {
         }
     }
 
-    if (e.key === 'p') {
+    if (gameOn && e.key === 'p') {
         if (selection2 == 'fire' && fireball.power == 0) {
-             clearSelection(2)
+            clearSelection(2)
             selection2 = 'zap'
             zapSelect2.style = 'border: 2px solid white;'
         }

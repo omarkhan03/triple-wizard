@@ -10,6 +10,12 @@ let lastRenderTime = 0
 let winP2 = false
 let winP1 = false
 export const gameBoard = document.getElementById('game-board')
+const p1VictoryScreen = document.getElementById('p1VictoryScreen')
+const p2VictoryScreen = document.getElementById('p2VictoryScreen')
+const p3VictoryScreen = document.getElementById('p3VictoryScreen')
+
+export let gameOn = true
+
 
 function main(currentTime) {
 
@@ -23,7 +29,8 @@ function main(currentTime) {
   draw()
 }
 
-window.requestAnimationFrame(main)
+if (gameOn)
+  window.requestAnimationFrame(main)
 
 function update() {
   updateFireball()
@@ -60,8 +67,6 @@ function draw() {
 
   drawWorm(gameBoard)
 
-
-
  for (let i=0; i<=25; i++) {
    for (let j=0; j<=25; j++) {
      const square = document.createElement('div')
@@ -73,9 +78,15 @@ function draw() {
  }
 }
 
-function checkDeath() {
-
-
-
+export function handleP1Victory() {
+  p1VictoryScreen.display = block;
 }
 
+export function handleP2Victory() {
+  p2VictoryScreen.className = "endscreen"
+  gameOn = false
+}
+
+export function handleDraw() {
+
+}
