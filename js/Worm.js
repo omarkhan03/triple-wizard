@@ -1,15 +1,26 @@
-import { gameBoard, handleP1Victory, handleP2Victory, handleDraw } from './Game.js'
-import { fireball } from './Fireball.js'
+/* Course: SENG 513 */
+/* Date: NOV 14, 2023 */
+/* Assignment 3 */
+/* Name: Omar Khan */
+/* UCID: 30143707 */
 
+/* Note to marker: 
+   CUSTOM COLLISION DETECTION MECHANISM lines 59-76 
+   CUSTOM ANIMATION - random movement of worms lines 91-101
+*/
+
+import { handleP1Victory, handleP2Victory, handleDraw } from './Game.js'
+
+// initialize worms killed to 0
 let wormsKilledP1 = 0
 let wormsKilledP2 = 0
 
 const p1Score = document.getElementById('p1score')
 const p2Score = document.getElementById('p2score')
 
-
 export let worms = []
 
+// Update function for worms
 export function update() {
     // loop through each worm
     for (let i = 0; i < worms.length; i++) {
@@ -29,23 +40,24 @@ export function update() {
         }
     }
 
+    // check if either player has won, or if there is a draw
     checkVictory()
 }
 
+// Check if either player has won, or if there is a draw
 function checkVictory() {
     if (wormsKilledP1 >= 50 && wormsKilledP2 < 50) {
         handleP1Victory()
     }
     else if (wormsKilledP2 >= 50 && wormsKilledP1 < 50) {
-        console.log("player 2 wins!")
         handleP2Victory()
     }
     else if (wormsKilledP2 >= 50 && wormsKilledP1 >= 50) {
-        console.log("draw.")
         handleDraw()
     }
 }
 
+// COLLISION DETECTION - Check if a worm is on the same tile as a player
 export function checkWorm(xp, yp, player) {
     // loop through each worm
     for (let i = 0; i < worms.length; i++) {
@@ -64,6 +76,7 @@ export function checkWorm(xp, yp, player) {
     }
 }
 
+// Draw function for worms
 export function draw(gameBoard) {
     // loop through each worm
     for (let i = 0; i < worms.length; i++) {
@@ -75,6 +88,7 @@ export function draw(gameBoard) {
     }
 }
 
+// CUSTOM ANIMATION - Spawn a new worm at a random x and y position
 export function spawnWorm() {
     // create new worm at random x and y positions between 0 and 25
     let xr = Math.floor(Math.random() * 25) + 1
@@ -84,26 +98,9 @@ export function spawnWorm() {
         x: xr,
         y: yr
     })
-    // let overlap = false
-
-    // // loop through each worm
-    // for (let i = 0; i < worms.length; i++) {
-    //     // if the new worm is on top of an existing worm, get new x and y positions
-    //     if (x == worms[i].x && y == worms[i].y) {
-    //         overlap = true
-    //     }
-    // }
-
-    // if (!overlap) {
-
-    // }
 }
 
-spawnWorm()
-spawnWorm()
-spawnWorm()
-spawnWorm()
-spawnWorm()
+// Spawn a few worms at the start of the game
 spawnWorm()
 spawnWorm()
 spawnWorm()

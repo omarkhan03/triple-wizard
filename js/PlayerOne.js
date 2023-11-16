@@ -1,3 +1,9 @@
+/* Course: SENG 513 */
+/* Date: NOV 14, 2023 */
+/* Assignment 3 */
+/* Name: Omar Khan */
+/* UCID: 30143707 */
+
 import { createFireball, fireball } from "./Fireball.js"
 import { createZap, zap } from "./Zap.js"
 import { selection1 as elementSelection } from "./Select.js"

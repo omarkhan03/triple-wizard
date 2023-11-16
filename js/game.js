@@ -1,21 +1,21 @@
+/* Course: SENG 513 */
+/* Date: NOV 14, 2023 */
+/* Assignment 3 */
+/* Name: Omar Khan */
+/* UCID: 30143707 */
+
 import { draw as drawP1} from './PlayerOne.js'
 import { draw as drawP2} from './PlayerTwo.js'
-import { outsideGrid } from './Grid.js'
 import { update as updateFireball, draw as drawFireball, update2 as updateFireball2, draw2 as drawFireball2, fireball, fireball2 } from './Fireball.js'
 import { update as updateZap, draw as drawZap, update2 as updateZap2, draw2 as drawZap2  } from './Zap.js'
 import { update as updateIce, draw as drawIce, update2 as updateIce2, draw2 as drawIce2 } from './Ice.js'
 import { worms, draw as drawWorm, update as updateWorms } from './Worm.js'
 
 let lastRenderTime = 0
-let winP2 = false
-let winP1 = false
 export const gameBoard = document.getElementById('game-board')
-const p1VictoryScreen = document.getElementById('p1VictoryScreen')
-const p2VictoryScreen = document.getElementById('p2VictoryScreen')
-const p3VictoryScreen = document.getElementById('p3VictoryScreen')
+const victoryScreen = document.getElementById('victoryScreen')
 
 export let gameOn = true
-
 
 function main(currentTime) {
 
@@ -32,6 +32,7 @@ function main(currentTime) {
 if (gameOn)
   window.requestAnimationFrame(main)
 
+// Call update functions for all objects
 function update() {
   updateFireball()
   updateFireball2()
@@ -43,13 +44,9 @@ function update() {
   updateIce2()
 
   updateWorms()
-
-
-  // console.log(fireball.x, fireball.y)
-
-  // checkDeath()
 }
 
+// Call draw functions for all objects
 function draw() {
   gameBoard.innerHTML = ''
   drawP1(gameBoard)
@@ -67,6 +64,7 @@ function draw() {
 
   drawWorm(gameBoard)
 
+// Draw grid
  for (let i=0; i<=25; i++) {
    for (let j=0; j<=25; j++) {
      const square = document.createElement('div')
@@ -78,15 +76,23 @@ function draw() {
  }
 }
 
+// Called when player one wins
 export function handleP1Victory() {
-  p1VictoryScreen.display = block;
-}
-
-export function handleP2Victory() {
-  p2VictoryScreen.className = "endscreen"
+  victoryScreen.className = "endscreen"
+  victoryScreen.firstChild.innerHTML = "P1 Wins!"
   gameOn = false
 }
 
-export function handleDraw() {
+// Called when player two wins
+export function handleP2Victory() {
+  victoryScreen.className = "endscreen"
+  victoryScreen.firstChild.innerHTML = "P2 Wins!"
+  gameOn = false
+}
 
+// Called when there is a draw
+export function handleDraw() {
+  victoryScreen.className = "endscreen"
+  victoryScreen.firstChild.innerHTML = "Draw!"
+  gameOn = false
 }

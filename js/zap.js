@@ -1,3 +1,14 @@
+/* Course: SENG 513 */
+/* Date: NOV 14, 2023 */
+/* Assignment 3 */
+/* Name: Omar Khan */
+/* UCID: 30143707 */
+
+/* Note to marker: 
+  CUSTOM ALGORITHM on the how the zap attack tiles on the grid - lines 50-76 and 117-143
+  CUSTOM ANIMATION on movement of zap attack - lines 24 to 30
+*/
+
 import { checkWorm } from './Worm.js'
 
 export let zap = {
@@ -8,6 +19,7 @@ let direction = {
   x: 0, y: 0
 }
 
+// update zap position
 export function update() {
   zap.x += direction.x 
   zap.y += direction.y 
@@ -25,6 +37,7 @@ export function update() {
   }
 }
 
+// this function is called when the player uses the zap attack
 export function createZap(x, y, dirX, dirY) {
   zap.x = x
   zap.y = y
@@ -35,7 +48,7 @@ export function createZap(x, y, dirX, dirY) {
   zap.power = 7
 }
 
-
+// CUSTOM ALGORITHM - draw the zap on the grid
 export function draw(gameBoard) {
   if (zap.power>1) {
     const zapElement = document.createElement('div')
@@ -60,11 +73,10 @@ export function draw(gameBoard) {
         }
       }
     }
-
   }
-
 }
 
+//--------------- Below is the same code as above, but for the second player ---------------//
 
 export let zap2 = {
   x: 6, y: 6, power: 0
@@ -74,6 +86,7 @@ let direction2 = {
   x: 0, y: 0
 }
 
+// update zap position
 export function update2() {
   zap2.x += direction2.x
   zap2.y += direction2.y
@@ -91,6 +104,7 @@ export function update2() {
   }
 }
 
+// this function is called when the player uses the zap attack
 export function createZap2(x, y, dirX, dirY) {
   zap2.x = x
   zap2.y = y
@@ -101,7 +115,7 @@ export function createZap2(x, y, dirX, dirY) {
   zap2.power = 7
 }
 
-
+// CUSTOM ALGORITHM - draw the zap on the grid
 export function draw2(gameBoard) {
   if (zap2.power>1) {
     const zap2Element = document.createElement('div')
@@ -110,8 +124,6 @@ export function draw2(gameBoard) {
     zap2Element.classList.add('zap')
     gameBoard.appendChild(zap2Element)
   } else if (zap2.power==1) {
-    console.log('zap')
-
 
     for (let i=zap2.x-3; i<=zap2.x+3; i++) {
       for (let j=zap2.y-3; j<=zap2.y+3; j++) {
@@ -128,7 +140,5 @@ export function draw2(gameBoard) {
         }
       }
     }
-
   }
-
 }

@@ -1,3 +1,14 @@
+/* Course: SENG 513 */
+/* Date: NOV 14, 2023 */
+/* Assignment 3 */
+/* Name: Omar Khan */
+/* UCID: 30143707 */
+
+/* Note to marker: 
+   CUSTOM ALGORITHM on the how the ice attack tiles on the grid - lines 50-77 and 118-144
+   CUSTOM ANIMATION on movement of ice attack - lines 24 to 30
+*/
+
 import { checkWorm } from './Worm.js'
 
 export let ice = {
@@ -8,6 +19,7 @@ let direction = {
     x: 0, y: 0
 }
   
+// update ice position
 export function update() {
     ice.x += direction.x
     ice.y += direction.y
@@ -25,6 +37,7 @@ export function update() {
     }
 }
 
+// this function is called when the player uses the ice attack
 export function createIce(x, y, dirX, dirY) {
     ice.x = x
     ice.y = y
@@ -35,7 +48,7 @@ export function createIce(x, y, dirX, dirY) {
     ice.power = 3
 }
 
-
+// CUSTOM ALGORITHM - draw the ice on the grid
 export function draw(gameBoard) {
     if (ice.power>1) {
         const iceElement = document.createElement('div')
@@ -61,11 +74,10 @@ export function draw(gameBoard) {
             }
         }
         }
-
     }
-
 }
 
+//--------------- Below is the same code as above, but for the second player ---------------//
 
 export let ice2 = {
     x: 6, y: 6, power: 0
@@ -75,6 +87,7 @@ let direction2 = {
     x: 0, y: 0
 }
   
+// update ice position
 export function update2() {
     ice2.x += direction2.x
     ice2.y += direction2.y
@@ -92,6 +105,7 @@ export function update2() {
     }
 }
 
+// this function is called when the player uses the ice attack
 export function createIce2(x, y, dirX, dirY) {
     ice2.x = x
     ice2.y = y
@@ -102,7 +116,7 @@ export function createIce2(x, y, dirX, dirY) {
     ice2.power = 3
 }
 
-
+// CUSTOM ALGORITHM - draw the ice on the grid
 export function draw2(gameBoard) {
     if (ice2.power>1) {
         const ice2Element = document.createElement('div')
@@ -111,7 +125,6 @@ export function draw2(gameBoard) {
         ice2Element.classList.add('ice')
         gameBoard.appendChild(ice2Element)
     } else if (ice2.power==1) {
-        console.log('ice')
 
         for (let i=ice2.x-2; i<=ice2.x+2; i++) {
         for (let j=ice2.y-2; j<=ice2.y+2; j++) {
@@ -128,7 +141,5 @@ export function draw2(gameBoard) {
             }
         }
         }
-
     }
-
 }

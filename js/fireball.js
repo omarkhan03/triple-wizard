@@ -1,3 +1,14 @@
+/* Course: SENG 513 */
+/* Date: NOV 14, 2023 */
+/* Assignment 3 */
+/* Name: Omar Khan */
+/* UCID: 30143707 */
+
+/* Note to marker: 
+  CUSTOM ALGORITHM on the how the fireball attack tiles on the grid - lines 50-75 and 116-141
+  CUSTOM ANIMATION on movement of fireball attack - lines 24 to 30
+*/
+
 import { checkWorm } from './Worm.js'
 
 export let fireball = {
@@ -8,6 +19,7 @@ let direction = {
   x: 0, y: 0
 }
 
+// update the fireball's position
 export function update() {
   fireball.x += direction.x
   fireball.y += direction.y
@@ -25,6 +37,7 @@ export function update() {
   }
 }
 
+// this function is called when the player attacks with fireball
 export function createFireball(x, y, dirX, dirY) {
   fireball.x = x
   fireball.y = y
@@ -35,7 +48,7 @@ export function createFireball(x, y, dirX, dirY) {
   fireball.power = 15
 }
 
-
+// CUSTOM ALGORITHM - draw the fireball on the grid
 export function draw(gameBoard) {
   if (fireball.power>0) {
     const fireballElement = document.createElement('div')
@@ -57,12 +70,12 @@ export function draw(gameBoard) {
         if (Math.abs(i-fireball.x)+Math.abs(j-fireball.y)<=2) {
           gameBoard.appendChild(fireballElement)
         }
-
       }
     }
   }
 }
 
+//--------------- Below is the same code as above, but for the second player ---------------//
 
 export let fireball2 = {
   x: 5, y: 5, power: 0
@@ -72,6 +85,7 @@ let direction2 = {
   x: 0, y: 0
 }
 
+// update the fireball's position
 export function update2() {
   fireball2.x += direction2.x
   fireball2.y += direction2.y
@@ -89,6 +103,7 @@ export function update2() {
   }
 }
 
+// this function is called when the player attacks with fireball
 export function createFireball2(x, y, dirX, dirY) {
   fireball2.x = x
   fireball2.y = y
@@ -99,7 +114,7 @@ export function createFireball2(x, y, dirX, dirY) {
   fireball2.power = 15
 }
 
-
+// CUSTOM ALGORITHM - draw the fireball on the grid
 export function draw2(gameBoard) {
   if (fireball2.power>1) {
     const fireball2Element = document.createElement('div')
@@ -121,9 +136,7 @@ export function draw2(gameBoard) {
         if (Math.abs(i-fireball2.x)+Math.abs(j-fireball2.y)<=2) {
           gameBoard.appendChild(fireball2Element)
         }
-
       }
     }
   }
-
 }
